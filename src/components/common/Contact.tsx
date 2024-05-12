@@ -1,3 +1,9 @@
+import MainLayout from "../layout/MainLayout";
+
 export default function Contact() {
-  return <div>Contact</div>;
+  return (
+    <MainLayout>
+      <div>Contact</div>
+    </MainLayout>
+  );
 }

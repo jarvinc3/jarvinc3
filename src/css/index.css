@@ -9,5 +9,17 @@
 @media (max-width: 568px) {
     .main {
         background-image: url('/background-v.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
+}
+
+.gifimg {
+    animation-play-state: paused;
+}
+
+.gifimg:hover {
+    animation-play-state: running;
 }

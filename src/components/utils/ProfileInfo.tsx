@@ -1,7 +1,7 @@
 export default function ProfileInfo() {
   return (
     <div className="relative flex flex-col w-full gap-3 pb-8">
-      <article className="absolute top-[-100px] flex justify-center w-full">
+      <article className="sm:absolute sm:top-[-100px] flex justify-center w-full pt-10 sm:pt-0">
         <img
           className="rounded-md"
           width={200}
@@ -9,7 +9,7 @@ export default function ProfileInfo() {
           alt=""
         />
       </article>
-      <section className="flex flex-col items-center gap-3 text-center mt-[110px]">
+      <section className="flex flex-col items-center gap-3 text-center sm:mt-[110px]">
         <h2 className="text-2xl font-bold">{`<Jarvin Collado/>`}</h2>
         <p className="w-auto p-2 font-medium rounded-md bg-slate-100">
           Frontend Developer

@@ -1,3 +1,8 @@
+import MainLayout from "../layout/MainLayout";
+
 export default function Works() {
-  return <div>Works</div>;
+  return (
+    <MainLayout>
+      <div>Works</div>
+    </MainLayout>);
 }
