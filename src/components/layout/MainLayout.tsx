@@ -18,7 +18,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <section className="sm:w-[20%] hidden mt-28 sm:mt-0 bg-white rounded-2xl sm:flex justify-center px-8">
         <ProfileInfo />
       </section>
-      {!open && <section className="p-5 overflow-y-auto bg-white sm:max-h-[90%] max-h-[75%] sm:p-16 sm:w-1/2 rounded-2xl scrollbar-hide">{children}</section>}
+      {!open && <section className="p-5 overflow-y-auto bg-white sm:max-h-[90%] max-h-[75%] sm:p-16 sm:w-1/2 rounded-2xl scrollbar-hide relative">{children}</section>}
       <section className="sm:w-[7%] w-[44vh] sm:h-auto z-10 h-[70px] bg-white rounded-2xl p-3 py-4 flex justify-center mt-3 sm:mt-0 fixed sm:relative bottom-3 sm:bottom-0 sm:left-0 sm:translate-x-0 left-1/2 -translate-x-1/2">
         <Navbar open={open} onClick={handleClick} />
       </section>

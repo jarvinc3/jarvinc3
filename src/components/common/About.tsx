@@ -6,7 +6,7 @@ export default function About() {
       <div className="flex flex-col gap-5">
         <section className="flex items-center gap-2">
           <h2 className="text-2xl font-bold">About</h2>
-          <div className="w-2/5 h-1 rounded-full bg-cyan-500"></div>
+          <div className="w-2/5 h-1 rounded-full bg-[#acdcf2]"></div>
         </section>
         <article className="flex flex-col gap-3 w-[85%] font-normal">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, provident? Quasi, ullam ab laborum veniam sunt minus animi dolorum, modi mollitia perferendis vitae tempore aliquam quod aperiam asperiores quos vero?</p>
