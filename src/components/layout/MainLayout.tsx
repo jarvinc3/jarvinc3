@@ -15,6 +15,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
   return (
     <div className="fixed xl:relative flex flex-col justify-between xl:flex-row xl:justify-center xl:items-start w-screen h-screen xl:gap-10 xl:pt-[10%] p-4 xl:p-0 main">
+
       <section className="xl:w-[20%] hidden mt-28 xl:mt-0 bg-white rounded-2xl xl:flex justify-center px-8">
         <ProfileInfo />
       </section>

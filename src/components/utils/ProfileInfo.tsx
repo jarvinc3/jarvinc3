@@ -48,7 +48,11 @@ export default function ProfileInfo() {
           </li>
         </ul>
       </section>
-      <button className="w-full p-3 rounded-md bg-[#9addee] hover:bg-[#c2e4e5] text-white">
+      <button
+        type="button"
+        data-ripple-light="true"
+        className="align-middle mt-3 select-none active:animate-ping font-sans font-bold text-center bg-[#9addee] hover:bg-[#c2e4e5] uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+      >
         Download CV
       </button>
     </div>
