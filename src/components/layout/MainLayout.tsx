@@ -14,8 +14,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="fixed sm:relative flex flex-col justify-between sm:flex-row sm:justify-center sm:items-start w-screen h-screen sm:gap-10 sm:pt-[10%] p-4 sm:p-0 main">
-      <section className="sm:w-[20%] hidden mt-28 sm:mt-0 bg-white rounded-2xl sm:flex justify-center px-8">
+    <div className="fixed xl:relative flex flex-col justify-between xl:flex-row xl:justify-center xl:items-start w-screen h-screen xl:gap-10 xl:pt-[10%] p-4 xl:p-0 main">
+      <section className="xl:w-[20%] hidden mt-28 xl:mt-0 bg-white rounded-2xl xl:flex justify-center px-8">
         <ProfileInfo />
       </section>
       {!open && (

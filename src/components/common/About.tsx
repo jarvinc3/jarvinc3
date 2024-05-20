@@ -16,7 +16,7 @@ export default function About() {
           <h3 className="text-xl font-medium">What I Do!</h3>
           <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2">
             <div className="flex items-center w-full gap-2 p-3 bg-[#f4c6f4] rounded-md shadow-lg h-28">
-              <img className="gifimg" src="/public/desing.gif" alt="" />
+              <img className="gifimg" src="/desing.gif" alt="" />
               <section className="pl-3 border-l border-gray-400 blo2k">
                 <h3 className="bg-clip-text text-transparent bg-gradient-to-l from-[#005BC4] to-[#27272A] text-lg font-bold">
                   Web Desing
@@ -25,7 +25,7 @@ export default function About() {
               </section>
             </div>
             <div className="flex items-center w-full gap-2 p-3 bg-[#acdcf2] rounded-md shadow-lg h-28">
-              <img className="gifimg" src="/public/frontend.gif" alt="" />
+              <img className="gifimg" src="/frontend.gif" alt="" />
               <section className="pl-3 border-l border-gray-400 blo2k">
                 <h3 className="bg-clip-text text-transparent bg-gradient-to-l from-[#005BC4] to-[#27272A] text-lg font-bold">
                   Frontend Developer
@@ -34,7 +34,7 @@ export default function About() {
               </section>
             </div>
             <div className="flex items-center w-full gap-2 p-3 bg-[#f5c5ab] rounded-md shadow-lg h-28">
-              <img className="gifimg" src="/public/backend.gif" alt="" />
+              <img className="gifimg" src="/backend.gif" alt="" />
               <section className="pl-3 border-l border-gray-400 blo2k">
                 <h3 className="bg-clip-text text-transparent bg-gradient-to-l from-[#005BC4] to-[#27272A] text-lg font-bold">
                   Backend Developer
