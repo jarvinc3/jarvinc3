@@ -5,13 +5,13 @@ export default function ProfileInfo() {
         <img
           className="rounded-md"
           width={200}
-          src="/public/profile.jpg"
+          src="/profile.jpg"
           alt=""
         />
       </article>
       <section className="flex flex-col items-center gap-3 text-center sm:mt-[110px]">
         <h2 className="text-2xl font-bold">{`<Jarvin Collado/>`}</h2>
-        <p className="w-auto p-2 font-medium rounded-md bg-slate-100">
+        <p className="w-auto p-2 px-4 font-medium rounded-md bg-slate-100">
           Frontend Developer
         </p>
       </section>
@@ -32,7 +32,7 @@ export default function ProfileInfo() {
             </div>
             <div>
               <p className="text-sm">Email</p>
-              <span className="text-lg font-semibold">jarvinct3@gmail.com</span>
+              <span className="text-lg font-semibold text-container">jarvinct3@gmail.com</span>
             </div>
           </li>
           <li className="flex items-center gap-2 p-2">

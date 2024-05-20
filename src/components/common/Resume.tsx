@@ -215,5 +215,6 @@ export default function Resume() {
           </div>
         </section>
       </div>
-    </MainLayout>);
+    </MainLayout>
+  );
 }
