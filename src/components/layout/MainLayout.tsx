@@ -19,7 +19,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         <ProfileInfo />
       </section>
       {!open && (
-        <section className="p-4 overflow-hidden overflow-y-scroll bg-white sm:max-h-[90%] max-h-[75%] sm:p-16 sm:w-1/2 rounded-2xl relative">
+        <section className="p-4 overflow-hidden overflow-y-scroll bg-white sm:max-h-[90%] max-h-[75%] sm:p-16 sm:w-1/2 rounded-2xl relative scrollbar-hide">
           {children}
         </section>
       )}
