@@ -1,8 +1,6 @@
-import MainLayout from "../layout/MainLayout";
 
 export default function About() {
   return (
-    <MainLayout>
       <div className="flex flex-col gap-5">
         <section className="flex items-center gap-2">
           <h2 className="text-2xl font-bold">About</h2>
@@ -45,6 +43,5 @@ export default function About() {
           </div>
         </section>
       </div>
-    </MainLayout>
   );
 }

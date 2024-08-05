@@ -23,7 +23,7 @@ export default function ProfileInfo() {
             </div>
             <div>
               <p className="text-sm">Phone</p>
-              <span className="text-lg font-semibold">+1 (809) 421 3066</span>
+              <span className="text-lg font-semibold">+1 (809) 637 6631</span>
             </div>
           </li>
           <li className="flex items-center gap-2 p-2 border-b">
@@ -51,7 +51,7 @@ export default function ProfileInfo() {
       <button
         type="button"
         data-ripple-light="true"
-        className="align-middle mt-3 select-none active:animate-ping font-sans font-bold text-center bg-[#9addee] hover:bg-[#c2e4e5] uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+        className="align-middle mt-3 select-none active:scale-[0.98] hover:scale-[1.01] font-sans font-bold text-center bg-[#9addee] hover:bg-[#c2e4e5] uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
       >
         Download CV
       </button>
