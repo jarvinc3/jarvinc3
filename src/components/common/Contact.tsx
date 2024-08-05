@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import MainLayout from "../layout/MainLayout";
 import emailjs from 'emailjs-com';
 
 export default function Contact() {
@@ -30,7 +29,6 @@ export default function Contact() {
   };
 
   return (
-    <MainLayout>
       <div className="">
         <section className="flex items-center gap-2">
           <h2 className="text-2xl font-bold">Contact</h2>
@@ -83,6 +81,5 @@ export default function Contact() {
           </form>
         </section>
       </div>
-    </MainLayout>
   );
 }
