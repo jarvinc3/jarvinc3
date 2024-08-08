@@ -1,31 +1,35 @@
-interface NavbarProps {
-  setView: (view: string) => void;
-  view: string;
+ import { motion, useScroll, useTransform } from "framer-motion";
+
+ interface NavigationProps {
+  scrollRef: React.MutableRefObject<null>;
 }
 
-export default function Navbar({ setView, view }: NavbarProps) {
-  return (
-    <ul className="flex items-center justify-between gap-5 xl:flex-col">
-      <li onClick={() => setView("about")} className={`flex cursor-pointer transition-all duration-300 flex-col items-center px-4 py-2 rounded-md ${view === "about" ? "bg-[#9addee] scale-[1.05]" : "bg-slate-100 hover:bg-[#c2e4e5] hover:scale-[1.05]"}`}>
-        <img className="w-6 xl:w-8" src="/svg/user.svg" alt="" />
-        <span className="hidden xl:block">About</span>
-      </li>
-
-      <li onClick={() => setView("resume")} className={`flex cursor-pointer transition-all duration-300 flex-col items-center px-3 py-2 rounded-md ${view === "resume" ? "bg-[#9addee] scale-[1.05]" : "bg-slate-100 hover:bg-[#c2e4e5] hover:scale-[1.05]"}`}>
-        <img className="w-6 xl:w-8" src="/svg/resume.svg" alt="" />
-        <span className="hidden xl:block">Resume</span>
-      </li>
-
-      <li onClick={() => setView("works")} className={`flex cursor-pointer transition-all duration-300 flex-col items-center px-4 py-2 rounded-md ${view === "works" ? "bg-[#9addee] scale-[1.05]" : "bg-slate-100 hover:bg-[#c2e4e5] hover:scale-[1.05]"}`}>
-        <img className="w-6 xl:w-8" src="/svg/work.svg" alt="" />
-        <span className="hidden xl:block">Works</span>
-      </li>
-
-      <li onClick={() => setView("contact")} className={`flex cursor-pointer transition-all duration-300 flex-col items-center px-3 py-2 rounded-md ${view === "contact" ? "bg-[#9addee] scale-[1.05]" : "bg-slate-100 hover:bg-[#c2e4e5] hover:scale-[1.05]"}`}>
-        <img className="w-6 xl:w-8" src="/svg/contact.svg" alt="" />
-        <span className="hidden xl:block">Contact</span>
-      </li>
-
-    </ul>
+export const Navigation = ({ scrollRef }: NavigationProps) => {
+  const { scrollYProgress } = useScroll({ container: scrollRef });
+  const background = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["rgba(0, 183, 255, 0)", "rgba(0, 183, 255, 1)"]
   );
-}
+  const height = useTransform(scrollYProgress, [0, 1], [120, 60]);
+
+  return (
+    <motion.div
+      className="sticky bottom-0 left-0 z-50 flex items-center justify-between w-full p-4"
+      id="navigation"
+      style={{
+        position: "fixed",
+        bottom: 0,
+        width: "100%",
+        background,
+        height
+      }}
+    >
+      <ul className="flex items-center justify-between gap-4 text-2xl text-black">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </motion.div>
+  );
+};
