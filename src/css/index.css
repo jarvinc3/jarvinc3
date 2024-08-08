@@ -17,7 +17,12 @@ body {
   display: none;
 }
 
-.main {
-  background-color: #9addee;
-  background-image: linear-gradient(61deg, #9addee 0%, #c2e4e5 100%);
+.scrollbar-hide::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
