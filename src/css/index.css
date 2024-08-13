@@ -26,3 +26,15 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.main{
+  background: url('/public/bg-white.jpg') ;
+}
+
+/* .main{
+  background: url('/public/bg-white.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
