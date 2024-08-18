@@ -5,6 +5,9 @@
 body {
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .scrollbar-hide {
@@ -30,6 +33,7 @@ body {
 .main{
   background: url('/public/bg-white.jpg') ;
 }
+
 
 /* .main{
   background: url('/public/bg-white.jpg') no-repeat center center fixed;
