@@ -16,21 +16,6 @@ export const Home = () => {
       console.log(clickedSection);
    };
 
-   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-   const a = []
-   const b = []
-
-   for (let i = 0; i < numbers.length; i++) {
-      if (i % 2 === 0) {
-         a.push(i)
-      } else {
-         b.push(i)
-      }
-
-
-   }
-
-   console.log("par", a, "impar", b)
    return (
       <motion.div className="flex items-start justify-center w-screen h-screen p-20 bg-white main">
          <div className="flex relative items-center justify-center w-full h-full bg-gradient-to-r from-white via-gray-200 to-[#89909a] rounded-[4rem] shadow-xl">

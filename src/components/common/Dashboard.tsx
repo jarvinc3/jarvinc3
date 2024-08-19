@@ -33,7 +33,7 @@ export const Dashboard = ({onAnimate, handleClick, clickedSection}: DashboardPro
       }
    };
    return (
-      <div className="z-40 flex w-full h-full">
+      <div id="dashboard" className="z-40 flex w-full h-full">
          <div className="flex flex-col items-end justify-center w-1/3 h-full">
             <div className="flex flex-col gap-10">
                <section className="grid grid-cols-2">

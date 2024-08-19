@@ -9,10 +9,10 @@ interface NavbarProps {
 
 export default function Navbar({ handleClick, onAnimate, clickedSection }: NavbarProps) {
   return (
-    <motion.ul animate={{
+    <motion.ul initial={{ translateY: 1000 }} animate={{
       translateX:
-        clickedSection === "contact" ? "170%" :
-        clickedSection === "works" ? "-170%" : 0,
+        clickedSection === "contact" ? "150%" :
+        clickedSection === "works" ? "-150%" : 0,
       translateY: onAnimate ? 0 : 1000,
       transition: {
         duration: onAnimate ? 1 : 1.5,
