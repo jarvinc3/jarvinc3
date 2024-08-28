@@ -32,6 +32,7 @@ export const Dashboard = ({onAnimate, handleClick, clickedSection}: DashboardPro
          };
       }
    };
+
    return (
       <div id="dashboard" className="z-40 flex w-full h-full">
          <div className="flex flex-col items-end justify-center w-1/3 h-full">
@@ -41,7 +42,7 @@ export const Dashboard = ({onAnimate, handleClick, clickedSection}: DashboardPro
                   <motion.section
                      animate={onAnimate ? { x: 400, y: 300, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
                      onClick={() => handleClick("about")}
-                     className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
+                     className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear xl:h-36 2xl:h-44 2xl:w-28  xl:w-24"
                   >
                      <div className="flex flex-col items-center justify-center w-24 h-24 bg-blue-400 rounded-2xl">
                         <img className="w-12 h-12" src="/public/svg/user.svg" alt="" />
@@ -110,7 +111,7 @@ export const Dashboard = ({onAnimate, handleClick, clickedSection}: DashboardPro
                </motion.svg>
             </div>
             <div className="absolute flex items-end justify-center w-full h-full -translate-x-1/2 left-1/2">
-               <img className="2xl:w-[370px] xl:w-[300px] w-full" src="/public/yo-hd.png" alt="" />
+               <img className="2xl:w-[370px] xl:w-[300px] md:w-[250px] w-full" src="/public/yo-hd.png" alt="" />
             </div>
          </motion.div>
          <div className="flex flex-col items-start justify-between w-1/3 h-full gap-10">
