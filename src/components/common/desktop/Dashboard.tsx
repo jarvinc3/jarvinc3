@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { LightIcon } from '../utils/LightIcon';
+import { LightIcon } from '../../utils/LightIcon';
 import { Link } from 'react-router-dom';
 
 interface DashboardProps {
@@ -34,7 +34,6 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
       },
     };
     
-   
    return (
       <div className="z-40 flex w-full h-full">
          <div className="flex flex-col items-end justify-center w-1/3 h-full">
@@ -48,7 +47,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                         className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
                      >
                         <div className="flex flex-col items-center justify-center w-24 h-24 bg-blue-400 rounded-2xl">
-                           <img className="w-12 h-12" src="/public/svg/user.svg" alt="" />
+                           <img className="w-12 h-12" src="/svg/user.svg" alt="" />
                         </div>
                         <h2 className="text-xl font-medium">About</h2>
                      </motion.section>
@@ -60,7 +59,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                         className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
                      >
                         <div className="flex flex-col items-center justify-center w-24 h-24 bg-purple-400 rounded-2xl">
-                           <img className="w-12 h-12" src="/public/svg/resume.svg" alt="" />
+                           <img className="w-12 h-12" src="/svg/resume.svg" alt="" />
                         </div>
                         <h2 className="text-xl font-medium">Resume</h2>
                      </motion.section>
@@ -75,7 +74,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                         className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
                      >
                         <div className="flex flex-col items-center justify-center w-24 h-24 bg-teal-300 rounded-2xl">
-                           <img className="w-12 h-12" src="/public/svg/work.svg" alt="" />
+                           <img className="w-12 h-12" src="/svg/work.svg" alt="" />
                         </div>
                         <h2 className="text-xl font-medium">Works</h2>
                      </motion.section>
@@ -89,7 +88,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                         className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
                      >
                         <div className="flex flex-col items-center justify-center w-24 h-24 bg-red-300 rounded-2xl">
-                           <img className="w-12 h-12" src="/public/svg/contact.svg" alt="" />
+                           <img className="w-12 h-12" src="/svg/contact.svg" alt="" />
                         </div>
                         <h2 className="text-xl font-medium">Contact</h2>
                      </motion.section>
@@ -121,7 +120,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                </motion.svg>
             </div>
             <div className="absolute flex items-end justify-center w-full h-full -translate-x-1/2 left-1/2">
-               <img className="2xl:w-[370px] xl:w-[300px] w-full" src="/public/yo-hd.png" alt="" />
+               <img className="2xl:w-[370px] xl:w-[300px] w-full" src="/yo-hd.png" alt="" />
             </div>
          </motion.div>
          <div className="flex flex-col items-start justify-between w-1/3 h-full gap-10">
@@ -152,7 +151,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                      className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
                   >
                      <div className="flex flex-col items-center justify-center w-24 h-24 bg-gray-300 rounded-2xl">
-                        <img className="w-12 h-12" src="/public/svg/download.svg" alt="" />
+                        <img className="w-12 h-12" src="/svg/download.svg" alt="" />
                      </div>
                      <h2 className="text-base font-medium">Download CV</h2>
                   </motion.section>

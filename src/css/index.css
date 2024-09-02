@@ -30,13 +30,30 @@ body {
   scrollbar-width: none;
 }
 
-.main{
-  background: url('/public/bg-white.jpg') ;
+.main {
+  background: url("/bg-white.jpg");
 }
 
+@media (max-width: 1279px) {
+  .desktop {
+    display: none;
+  }
+  .main {
+    background: url("/bg-white.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+}
+@media (min-width: 1280px) {
+  .responsive {
+    display: none;
+  }
+}
 
 /* .main{
-  background: url('/public/bg-white.jpg') no-repeat center center fixed;
+  background: url('/bg-white.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

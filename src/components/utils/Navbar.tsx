@@ -24,22 +24,22 @@ export default function Navbar({ handleClick, onAnimate, clickedSection }: Navba
     >
       <Link to='/about'>
         <li className={`transition-all duration-300 cursor-pointer hover:scale-105  p-2 ${clickedSection === 'about' ? "shadow-inner rounded-2xl border scale-105" : ""}`} onClick={() => handleClick('about')}>
-          <img className="w-8 h-8" src="/public/svg/user.svg" alt="" />
+          <img className="w-8 h-8" src="/svg/user.svg" alt="" />
         </li>
       </Link>
       <Link to='/resume'>
         <li className={`transition-all duration-300 cursor-pointer hover:scale-105  p-2 ${clickedSection === 'resume' ? "shadow-inner rounded-2xl border scale-105" : ""}`} onClick={() => handleClick('resume')}>
-          <img className="w-8 h-8" src="/public/svg/resume.svg" alt="" />
+          <img className="w-8 h-8" src="/svg/resume.svg" alt="" />
         </li>
       </Link>
       <Link to='/works'>
         <li className={`transition-all duration-300 cursor-pointer hover:scale-105  p-2 ${clickedSection === 'works' ? "shadow-inner rounded-2xl border scale-105" : ""}`} onClick={() => handleClick('works')}>
-          <img className="w-8 h-8" src="/public/svg/work.svg" alt="" />
+          <img className="w-8 h-8" src="/svg/work.svg" alt="" />
         </li>
       </Link>
       <Link to='/contact'>
         <li className={`transition-all duration-300 cursor-pointer hover:scale-105  p-2 ${clickedSection === 'contact' ? "shadow-inner rounded-2xl border scale-105" : ""}`} onClick={() => handleClick('contact')}>
-          <img className="w-8 h-8" src="/public/svg/contact.svg" alt="" />
+          <img className="w-8 h-8" src="/svg/contact.svg" alt="" />
         </li>
       </Link>
     </motion.ul>

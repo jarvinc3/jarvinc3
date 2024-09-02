@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import Navbar from '../utils/Navbar';
+import Navbar from '../../utils/Navbar';
 
 interface AboutMeProps {
    clickedSection: string | null;
@@ -30,8 +30,8 @@ export const AboutMe = ({ clickedSection, handleClick, onAnimate }: AboutMeProps
                initial={{ translateX: 1000 }}
                animate={
                   clickedSection === "about"
-                     ? { translateX: 0, transition: { duration: 0.5, delay: 1 } }
-                     : { translateX: 1000, transition: { duration: 0.5, delay: 0.2 } }
+                     ? { translateX: 0, transition: { duration: 1, delay: 0.5 } }
+                     : { translateX: 1000, transition: { duration: 1 } }
                }
                className='z-50 w-3/4 shadow-2xl h-1/2 bg-slate-200 rounded-3xl'
             ></motion.div>
@@ -42,8 +42,8 @@ export const AboutMe = ({ clickedSection, handleClick, onAnimate }: AboutMeProps
                   initial={{ translateX: 1000 }}
                   animate={
                      clickedSection === "about"
-                        ? { translateX: 0, transition: { duration: 1, delay: 0.5 } }
-                        : { translateX: 1000, transition: { duration: 1 } }
+                        ? { translateX: 0, transition: { duration: 0.5, delay: 1 } }
+                        : { translateX: 1000, transition: { duration: 0.5, delay: 0.2 } }
                   }
                   className='z-50 w-3/4 h-full shadow-2xl bg-slate-200 rounded-3xl'
                ></motion.div>

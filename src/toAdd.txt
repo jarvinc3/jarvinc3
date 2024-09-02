@@ -1,4 +1,4 @@
 arreglar error de navbar ( cuando presiono back este desaparece )
-agregar dark module
+agregar dark mode
 hacer algo con el responsive
 agregar informarcion correspondiente en las secciones
