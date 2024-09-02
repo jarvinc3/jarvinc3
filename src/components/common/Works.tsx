@@ -45,7 +45,7 @@ export const Works = ({ clickedSection, handleClick, onAnimate }: WorksProps) =>
                animate={
                   clickedSection === "works"
                      ? { translateX: 0, transition: { duration: 0.5, delay: 1 } }
-                     : { translateX: 1000, transition: { duration: 0.5, delay: 0.2 } }
+                     : { translateX: 1000, transition: { duration: 1 } }
                }
                className='z-50 w-3/4 shadow-2xl h-1/2 bg-slate-200 rounded-3xl'
             ></motion.div>
@@ -56,7 +56,7 @@ export const Works = ({ clickedSection, handleClick, onAnimate }: WorksProps) =>
                animate={
                   clickedSection === "works"
                      ? { translateY: 0, transition: { duration: 1, delay: 0.5 } }
-                     : { translateY: 1000, transition: { duration: 0.5, delay: 0.2 } }
+                     : { translateY: 1000, transition: { duration: 1 } }
                }
                className='z-50 w-3/4 shadow-2xl h-1/2 bg-slate-200 rounded-3xl'
             ></motion.div>

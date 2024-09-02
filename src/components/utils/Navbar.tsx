@@ -12,8 +12,8 @@ export default function Navbar({ handleClick, onAnimate, clickedSection }: Navba
   return (
     <motion.ul initial={{ translateY: 1000 }} animate={{
       translateX:
-        clickedSection === "contact" ? "150%" :
-          clickedSection === "resume" ? "-150%" : 0,
+        clickedSection === "contact" ? "170%" :
+          clickedSection === "resume" ? "-163%" : 0,
       translateY: onAnimate ? 0 : 1000,
       transition: {
         duration: onAnimate ? 1 : 1.5,

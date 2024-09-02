@@ -14,25 +14,26 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
 
    const draw = {
       hidden: {
-         pathLength: 0,
-         opacity: { delay: 1 },
-         transition: {
-            pathLength: { duration: 1 },
-            opacity: { duration: 2 }
-         }
+        pathLength: 0,
+        opacity: 0,
+        transition: {
+          pathLength: { duration: 1 },
+          opacity: { duration: 2, delay: 1 },
+        },
       },
       visible: (i: number) => {
-         const delay = 0 + i;
-         return {
-            pathLength: 0.82,
-            opacity: 1,
-            transition: {
-               pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
-               opacity: { delay, duration: 0.01 }
-            }
-         };
-      }
-   };
+        const delay = 0 + i;
+        return {
+          pathLength: 0.82,
+          opacity: 1,
+          transition: {
+            pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
+            opacity: { delay, duration: 0.01 },
+          },
+        };
+      },
+    };
+    
    
    return (
       <div className="z-40 flex w-full h-full">

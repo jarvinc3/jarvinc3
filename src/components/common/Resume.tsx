@@ -29,7 +29,15 @@ export const Resume = ({ clickedSection, handleClick, onAnimate }: ResumeProps) 
             <Navbar handleClick={handleClick} onAnimate={onAnimate} clickedSection={clickedSection} />
          </section>
          <section className="flex items-center justify-center w-1/3 h-full pr-20">
-            <motion.div initial={{ translateX: 1000 }} animate={clickedSection === "resume" ? { translateX: 0, transition: { duration: 1, delay: 0.5 } } : { translateX: 1000, transition: { duration: 1, } }} className="w-full h-full shadow-2xl bg-slate-50 rounded-3xl"></motion.div>
+            <motion.div
+               initial={{ translateX: 1500 }}
+               animate={
+                  clickedSection === "resume"
+                     ? { translateX: 0, transition: { duration: 1, delay: 0.5 } }
+                     : { translateX: 1500, transition: { duration: 1, } }
+               }
+               className="absolute w-[45%] h-[80%] shadow-2xl right-20 bg-slate-50 rounded-3xl"
+            ></motion.div>
          </section>
       </div>
    )

@@ -11,7 +11,15 @@ export const Contact = ({ clickedSection, handleClick, onAnimate }: ContactProps
    return (
       <div id="contact" className="absolute flex w-full h-full py-20">
          <section className={`flex items-end justify-center w-1/3 h-full ${ clickedSection === "contact" ? "" : "opacity-0"}`}>
-            <motion.div initial={{ translateX: -1000 }} animate={clickedSection === "contact" ? { translateX: 0, transition: { duration: 1, delay: 0.5 } } : { translateX: -1000, transition: { duration: 1, }}} className="w-3/4 h-full shadow-2xl bg-slate-50 rounded-3xl"></motion.div>
+         <motion.div
+               initial={{ translateX: -1500 }}
+               animate={
+                  clickedSection === "contact"
+                     ? { translateX: 0, transition: { duration: 1, delay: 0.5 } }
+                     : { translateX: -1000, transition: { duration: 1, } }
+               }
+               className="absolute w-[45%] h-[80%] shadow-2xl left-20 bg-slate-50 rounded-3xl"
+            ></motion.div>
          </section>
          <section className={`flex items-end justify-center w-1/3 h-full ${ clickedSection === "contact" ? "" : "opacity-0"}`}>
             <Navbar handleClick={handleClick} onAnimate={onAnimate} clickedSection={clickedSection} />
