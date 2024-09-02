@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { LightIcon } from '../utils/LightIcon';
+import { Link } from 'react-router-dom';
 
 interface DashboardProps {
    handleClick: (section: string) => void;
@@ -8,7 +9,7 @@ interface DashboardProps {
    clickedSection: string | null;
 }
 
-export const Dashboard = ({onAnimate, handleClick, clickedSection}: DashboardProps) => {
+export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardProps) => {
    const [light, setLight] = useState(false);
 
    const draw = {
@@ -32,62 +33,70 @@ export const Dashboard = ({onAnimate, handleClick, clickedSection}: DashboardPro
          };
       }
    };
-
+   
    return (
-      <div id="dashboard" className="z-40 flex w-full h-full">
+      <div className="z-40 flex w-full h-full">
          <div className="flex flex-col items-end justify-center w-1/3 h-full">
             <div className="flex flex-col gap-10">
                <section className="grid grid-cols-2">
                   <motion.section></motion.section>
-                  <motion.section
-                     animate={onAnimate ? { x: 400, y: 300, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
-                     onClick={() => handleClick("about")}
-                     className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear xl:h-36 2xl:h-44 2xl:w-28  xl:w-24"
-                  >
-                     <div className="flex flex-col items-center justify-center w-24 h-24 bg-blue-400 rounded-2xl">
-                        <img className="w-12 h-12" src="/public/svg/user.svg" alt="" />
-                     </div>
-                     <h2 className="text-xl font-medium">About</h2>
-                  </motion.section>
-                  <motion.section
-                     animate={onAnimate ? { x: 500, y: 100, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
-                     onClick={() => handleClick("resume")}
-                     className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
-                  >
-                     <div className="flex flex-col items-center justify-center w-24 h-24 bg-purple-400 rounded-2xl">
-                        <img className="w-12 h-12" src="/public/svg/resume.svg" alt="" />
-                     </div>
-                     <h2 className="text-xl font-medium">Resume</h2>
-                  </motion.section>
+                  <Link to='/about'>
+                     <motion.section
+                        animate={onAnimate ? { x: 400, y: 300, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
+                        onClick={() => handleClick("about")}
+                        className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
+                     >
+                        <div className="flex flex-col items-center justify-center w-24 h-24 bg-blue-400 rounded-2xl">
+                           <img className="w-12 h-12" src="/public/svg/user.svg" alt="" />
+                        </div>
+                        <h2 className="text-xl font-medium">About</h2>
+                     </motion.section>
+                  </Link>
+                  <Link to='/resume'>
+                     <motion.section
+                        animate={onAnimate ? { x: 500, y: 100, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
+                        onClick={() => handleClick("resume")}
+                        className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
+                     >
+                        <div className="flex flex-col items-center justify-center w-24 h-24 bg-purple-400 rounded-2xl">
+                           <img className="w-12 h-12" src="/public/svg/resume.svg" alt="" />
+                        </div>
+                        <h2 className="text-xl font-medium">Resume</h2>
+                     </motion.section>
+                  </Link>
                   <motion.section></motion.section>
                </section>
                <section className="grid grid-cols-2">
-                  <motion.section
-                     animate={onAnimate ? { x: 500, y: -100, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
-                     onClick={() => handleClick("works")}
-                     className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
-                  >
-                     <div className="flex flex-col items-center justify-center w-24 h-24 bg-teal-300 rounded-2xl">
-                        <img className="w-12 h-12" src="/public/svg/work.svg" alt="" />
-                     </div>
-                     <h2 className="text-xl font-medium">Works</h2>
-                  </motion.section>
+                  <Link to='/works'>
+                     <motion.section
+                        animate={onAnimate ? { x: 500, y: -100, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
+                        onClick={() => handleClick("works")}
+                        className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
+                     >
+                        <div className="flex flex-col items-center justify-center w-24 h-24 bg-teal-300 rounded-2xl">
+                           <img className="w-12 h-12" src="/public/svg/work.svg" alt="" />
+                        </div>
+                        <h2 className="text-xl font-medium">Works</h2>
+                     </motion.section>
+                  </Link>
                   <motion.section></motion.section>
                   <motion.section></motion.section>
-                  <motion.section
-                     animate={onAnimate ? { x: 400, y: -300, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
-                     onClick={() => handleClick("contact")}
-                     className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
-                  >
-                     <div className="flex flex-col items-center justify-center w-24 h-24 bg-red-300 rounded-2xl">
-                        <img className="w-12 h-12" src="/public/svg/contact.svg" alt="" />
-                     </div>
-                     <h2 className="text-xl font-medium">Contact</h2>
-                  </motion.section>
+                  <Link to='/contact'>
+                     <motion.section
+                        animate={onAnimate ? { x: 400, y: -300, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
+                        onClick={() => handleClick("contact")}
+                        className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
+                     >
+                        <div className="flex flex-col items-center justify-center w-24 h-24 bg-red-300 rounded-2xl">
+                           <img className="w-12 h-12" src="/public/svg/contact.svg" alt="" />
+                        </div>
+                        <h2 className="text-xl font-medium">Contact</h2>
+                     </motion.section>
+                  </Link>
                </section>
             </div>
          </div>
-         <motion.div animate={ clickedSection === "contact" ? {translateX: "70%", transition: { duration: 1, delay: 0.5 }} : clickedSection === "works" ? {translateX: "-70%", transition: { duration: 1, delay: 0.5 }} : {translateX: 0, transition: { duration: 1, delay: 0.5 }}} className="relative flex items-center justify-center w-1/3 h-full">
+         <motion.div animate={clickedSection === "contact" ? { translateX: "70%", transition: { duration: 1, delay: 0.5 } } : clickedSection === "resume" ? { translateX: "-70%", transition: { duration: 1, delay: 0.5 } } : { translateX: 0, transition: { duration: 1, delay: 0.5 } }} className="relative flex items-center justify-center w-1/3 h-full">
             <div className={`bg-gradient-to-r from-[#37373a] to-[#161717] rounded-full ${onAnimate ? "w-0 h-0 opacity-0 delay-1000 transition-all duration-1000" : "opacity-1 xl:w-[25rem] xl:h-[25rem] 2xl:w-[34rem] 2xl:h-[34rem] transition-all duration-700 delay-700"}`}>
             </div>
             <div className={`absolute flex items-center justify-center w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}>
@@ -111,7 +120,7 @@ export const Dashboard = ({onAnimate, handleClick, clickedSection}: DashboardPro
                </motion.svg>
             </div>
             <div className="absolute flex items-end justify-center w-full h-full -translate-x-1/2 left-1/2">
-               <img className="2xl:w-[370px] xl:w-[300px] md:w-[250px] w-full" src="/public/yo-hd.png" alt="" />
+               <img className="2xl:w-[370px] xl:w-[300px] w-full" src="/public/yo-hd.png" alt="" />
             </div>
          </motion.div>
          <div className="flex flex-col items-start justify-between w-1/3 h-full gap-10">
