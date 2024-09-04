@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Dashboard } from "../components/common/desktop/Dashboard";
 import { AboutMe } from "../components/common/desktop/AboutMe";
 import { Resume } from "../components/common/desktop/Resume";
 import { Works } from "../components/common/desktop/Works";
 import { Contact } from "../components/common/desktop/Contact";
-import { Link } from "react-router-dom";
+
 
 export const Home = () => {
    const [clickedSection, setClickedSection] = useState<string | null>(null);

@@ -14,26 +14,26 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
 
    const draw = {
       hidden: {
-        pathLength: 0,
-        opacity: 0,
-        transition: {
-          pathLength: { duration: 1 },
-          opacity: { duration: 2, delay: 1 },
-        },
+         pathLength: 0,
+         opacity: 0,
+         transition: {
+            pathLength: { duration: 1 },
+            opacity: { duration: 2, delay: 1 },
+         },
       },
       visible: (i: number) => {
-        const delay = 0 + i;
-        return {
-          pathLength: 0.82,
-          opacity: 1,
-          transition: {
-            pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
-            opacity: { delay, duration: 0.01 },
-          },
-        };
+         const delay = 0 + i;
+         return {
+            pathLength: 0.82,
+            opacity: 1,
+            transition: {
+               pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
+               opacity: { delay, duration: 0.01 },
+            },
+         };
       },
-    };
-    
+   };
+
    return (
       <div className="z-40 flex w-full h-full">
          <div className="flex flex-col items-end justify-center w-1/3 h-full">
@@ -42,6 +42,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                   <motion.section></motion.section>
                   <Link to='/about'>
                      <motion.section
+                        initial={{ x: 0, y: -1000 }}
                         animate={onAnimate ? { x: 400, y: 300, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
                         onClick={() => handleClick("about")}
                         className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
@@ -54,6 +55,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                   </Link>
                   <Link to='/resume'>
                      <motion.section
+                        initial={{ x: -1000, y: 0 }}
                         animate={onAnimate ? { x: 500, y: 100, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
                         onClick={() => handleClick("resume")}
                         className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
@@ -69,6 +71,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                <section className="grid grid-cols-2">
                   <Link to='/works'>
                      <motion.section
+                        initial={{ x: -1000, y: 1000 }}
                         animate={onAnimate ? { x: 500, y: -100, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
                         onClick={() => handleClick("works")}
                         className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
@@ -83,6 +86,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                   <motion.section></motion.section>
                   <Link to='/contact'>
                      <motion.section
+                        initial={{ x: 0, y: 1000 }}
                         animate={onAnimate ? { x: 400, y: -300, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1 }}
                         onClick={() => handleClick("contact")}
                         className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
@@ -97,8 +101,8 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
             </div>
          </div>
          <motion.div animate={clickedSection === "contact" ? { translateX: "70%", transition: { duration: 1, delay: 0.5 } } : clickedSection === "resume" ? { translateX: "-70%", transition: { duration: 1, delay: 0.5 } } : { translateX: 0, transition: { duration: 1, delay: 0.5 } }} className="relative flex items-center justify-center w-1/3 h-full">
-            <div className={`bg-gradient-to-r from-[#37373a] to-[#161717] rounded-full ${onAnimate ? "w-0 h-0 opacity-0 delay-1000 transition-all duration-1000" : "opacity-1 xl:w-[25rem] xl:h-[25rem] 2xl:w-[34rem] 2xl:h-[34rem] transition-all duration-700 delay-700"}`}>
-            </div>
+            <motion.div className={`bg-gradient-to-r from-[#37373a] to-[#161717] rounded-full ${onAnimate ? "w-0 h-0 opacity-0 delay-1000 transition-all duration-1000" : "opacity-1 xl:w-[25rem] xl:h-[25rem] 2xl:w-[34rem] 2xl:h-[34rem] transition-all duration-700 delay-700"}`}>
+            </motion.div>
             <div className={`absolute flex items-center justify-center w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}>
                <motion.svg
                   width="600"
@@ -119,16 +123,16 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                   />
                </motion.svg>
             </div>
-            <div className="absolute flex items-end justify-center w-full h-full -translate-x-1/2 left-1/2">
+            <motion.div className="absolute flex items-end justify-center w-full h-full -translate-x-1/2 left-1/2">
                <img className="2xl:w-[370px] xl:w-[300px] w-full" src="/yo-hd.png" alt="" />
-            </div>
+            </motion.div>
          </motion.div>
          <div className="flex flex-col items-start justify-between w-1/3 h-full gap-10">
             <section className="flex flex-col justify-center gap-2 h-1/2">
-               <motion.h1 animate={onAnimate ? { x: -500, opacity: 0, transition: { duration: 0.6, delay: 0.5 } } : { x: 0, y: 0, opacity: 1, transition: { duration: 1, delay: 0.3 } }} className="text-5xl font-bold 2xl:text-6xl">
+               <motion.h1 initial={{ x: 1000, y: 0 }} animate={onAnimate ? { x: -500, opacity: 0, transition: { duration: 0.6, delay: 0.5 } } : { x: 0, y: 0, opacity: 1, transition: { duration: 1, delay: 0.3 } }} className="text-5xl font-bold 2xl:text-6xl">
                   Hi, I'm Jarvin
                </motion.h1>
-               <motion.h2 animate={onAnimate ? { x: -500, opacity: 0, transition: { duration: 0.5, delay: 0.5 } } : { x: 0, y: 0, opacity: 1, transition: { duration: 1, delay: 0.3 } }} className="text-2xl font-medium 2xl:text-3xl">
+               <motion.h2 initial={{ x: 1000, y: 0 }} animate={onAnimate ? { x: -500, opacity: 0, transition: { duration: 0.5, delay: 0.5 } } : { x: 0, y: 0, opacity: 1, transition: { duration: 1, delay: 0.3 } }} className="text-2xl font-medium 2xl:text-3xl">
                   Software Developer
                </motion.h2>
             </section>
@@ -136,6 +140,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                <section className="grid grid-cols-2">
                   <motion.section></motion.section>
                   <motion.div
+                     initial={{ x: 1000, y: 0 }}
                      animate={onAnimate ? { x: -450, y: -100, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1, transition: { duration: 0.3 } }}
                      className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.02] transition-all duration-300 ease-linear h-44 w-28"
                   >
@@ -147,6 +152,7 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                      </div>
                   </motion.div>
                   <motion.section
+                     initial={{ x: 0, y: 1000 }}
                      animate={onAnimate ? { x: -350, y: -300, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1, transition: { duration: 0.3 } }}
                      className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
                   >
