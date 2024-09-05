@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import Navbar from '../utils/Navbar';
+import Navbar from '../../utils/Navbar';
 
 interface ContactProps {
    clickedSection: string | null;

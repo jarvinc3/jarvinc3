@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import Navbar from '../utils/Navbar';
+import Navbar from '../../utils/Navbar';
 
 interface WorksProps {
    clickedSection: string | null;
@@ -20,7 +20,7 @@ export const Works = ({ clickedSection, handleClick, onAnimate }: WorksProps) =>
                      ? { translateY: 0, transition: { duration: 1, delay: 0.5 } }
                      : { translateY: -1000, transition: { duration: 1, } }
                }
-               className="z-50 w-3/4 h-full shadow-2xl bg-slate-50 rounded-3xl"
+               className="z-40 w-3/4 h-full shadow-2xl bg-slate-50 rounded-3xl"
             ></motion.div>
             <motion.div
                drag
