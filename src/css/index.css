@@ -38,13 +38,6 @@ body {
   .desktop {
     display: none;
   }
-  .main {
-    background: url("/bg-white.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
 }
 @media (min-width: 1280px) {
   .responsive {
