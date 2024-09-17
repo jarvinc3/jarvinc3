@@ -20,7 +20,7 @@ export const AboutMe = ({ clickedSection, handleClick, onAnimate }: AboutMeProps
                } className="flex flex-col w-3/4 h-full p-10 shadow-2xl bg-slate-50 rounded-3xl"
             >
                <div className="flex items-center gap-5">
-                  <h2 className="text-3xl font-bold">About Me</h2>
+                  <h2 className="text-2xl font-bold 2xl:text-xl">About Me</h2>
                   <div className="h-1 bg-[#60a5fa] rounded-full w-52"></div>
                </div>
                <div className="flex flex-col h-full gap-10 mt-10">

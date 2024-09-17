@@ -20,8 +20,8 @@ export const Home = () => {
 
 
    return (
-      <motion.div className="flex items-start justify-center w-screen h-screen bg-white scrollbar-hide main md:p-10 xl:p-20 ">
-         <div className="desktop flex relative items-center justify-center w-full h-full bg-gradient-to-r from-white via-gray-200 to-[#89909a] rounded-[4rem] shadow-xl">
+      <motion.div className="flex items-start justify-center w-screen h-screen bg-white scrollbar-hide main md:p-10 xl:p-10 3xl:p-20 ">
+         <div className="desktop flex relative items-center justify-center w-full h-full bg-gradient-to-r from-white via-gray-200 to-[#89909a] rounded-[3rem] 2xl:rounded-[4rem] shadow-xl">
             <Link to='/'>
                <motion.div animate={onAnimate ? { opacity: 1, transition: { duration: 1 } } : {}} onClick={() => { setOnAnimate(false), setClickedSection(null) }} whileHover={{ scale: 1.1 }} className="absolute z-50 p-2 transition-all duration-300 ease-linear bg-white shadow-xl opacity-0 top-10 left-10 rounded-3xl">
                   <img className="w-12 h-12" src="/svg/back.svg" alt="" />
