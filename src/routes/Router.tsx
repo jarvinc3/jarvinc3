@@ -6,6 +6,10 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<Home />} />
+        <Route path="/resume" element={<Home />} />
+        <Route path="/works" element={<Home />} />
+        <Route path="/contact" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
