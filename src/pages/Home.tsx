@@ -55,7 +55,7 @@ export const Home = () => {
             <Works clickedSection={clickedSection} handleClick={handleClick} onAnimate={onAnimate} />
             <Contact clickedSection={clickedSection} handleClick={handleClick} onAnimate={onAnimate} />
          </div>
-         <div className="flex flex-col relative items-center justify-center w-full h-full bg-gradient-to-b from-white via-gray-200 to-[#89909a] rounded-xl shadow-xl">
+         <div className="flex responsive flex-col relative items-center justify-center w-full h-full bg-gradient-to-b from-white via-gray-200 to-[#89909a] rounded-xl shadow-xl">
             <div className="w-full bg-orange-500 h-2/5 rounded-t-xl"></div>
             <div ref={scrollContainerRef} className="flex items-center justify-start w-full overflow-x-auto bg-blue-500 h-3/5 rounded-b-xl">
                <div className="flex p-4 space-x-4">
