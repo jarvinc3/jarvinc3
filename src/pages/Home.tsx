@@ -33,7 +33,7 @@ export const Home = () => {
             <Works clickedSection={clickedSection} handleClick={handleClick} onAnimate={onAnimate} />
             <Contact clickedSection={clickedSection} handleClick={handleClick} onAnimate={onAnimate} />
          </div>
-         <div className="responsive flex flex-col relative items-center justify-center w-full h-full bg-gradient-to-b from-white via-gray-200 to-[#89909a]">
+         <div className="relative flex items-center justify-center w-screen h-screen bg-white responsive">
             <DashboardMobile />
          </div>
       </motion.div>

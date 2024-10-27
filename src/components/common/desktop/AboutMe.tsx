@@ -17,7 +17,7 @@ export const AboutMe = ({ clickedSection, handleClick, onAnimate }: AboutMeProps
                   clickedSection === "about"
                      ? { translateX: 20, transition: { duration: 1, delay: 0.5 } }
                      : { translateX: -1000, transition: { duration: 1, } }
-               } className="flex flex-col w-3/4 h-full p-10 shadow-2xl bg-slate-50 rounded-3xl"
+               } className="z-50 flex flex-col w-3/4 h-full p-10 overflow-y-scroll shadow-2xl scrollbar-hide bg-slate-50 rounded-3xl"
             >
                <div className="flex items-center gap-5">
                   <h2 className="text-3xl font-bold">About Me</h2>
@@ -43,7 +43,7 @@ export const AboutMe = ({ clickedSection, handleClick, onAnimate }: AboutMeProps
                      ? { translateX: 0, transition: { duration: 1, delay: 0.5 } }
                      : { translateX: 1000, transition: { duration: 1 } }
                }
-               className='z-50 flex flex-col w-3/4 gap-5 shadow-2xl p-7 h-1/2 bg-slate-200 rounded-3xl'
+               className='z-50 flex flex-col w-3/4 gap-5 overflow-y-scroll shadow-2xl scrollbar-hide p-7 h-1/2 bg-slate-200 rounded-3xl'
             >
                <div className="flex items-center gap-5">
                   <h2 className="text-3xl font-bold">What I Do</h2>
@@ -78,7 +78,7 @@ export const AboutMe = ({ clickedSection, handleClick, onAnimate }: AboutMeProps
                         ? { translateX: 0, transition: { duration: 0.5, delay: 1 } }
                         : { translateX: 1000, transition: { duration: 0.5, delay: 0.2 } }
                   }
-                  className='z-50 flex flex-col justify-between w-3/4 h-full p-6 shadow-2xl bg-slate-200 rounded-3xl'
+                  className='z-50 flex flex-col justify-between w-3/4 h-full p-6 overflow-y-scroll shadow-2xl scrollbar-hide bg-slate-200 rounded-3xl'
                >
                   <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-100">
                      <div className="p-1 rounded-md">

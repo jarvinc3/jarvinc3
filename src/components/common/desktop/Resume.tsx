@@ -38,13 +38,13 @@ export const Resume = ({ clickedSection, handleClick, onAnimate }: ResumeProps) 
          </section>
          <section className="flex items-center justify-center w-1/3 h-full pr-20">
             <motion.div
-               initial={{ translateX: 1500 }}
+               initial={{ translateX: 2000 }}
                animate={
                   clickedSection === "resume"
                      ? { translateX: 0, transition: { duration: 1, delay: 0.5 } }
-                     : { translateX: 1500, transition: { duration: 1, } }
+                     : { translateX: 2000, transition: { duration: 1, } }
                }
-               className="absolute w-[45%] h-[80%] flex flex-col shadow-2xl p-10 right-20 bg-slate-50 rounded-3xl"
+               className="absolute w-[45%] h-[80%] overflow-y-scroll scrollbar-hide flex flex-col shadow-2xl z-50 p-10 right-20 bg-slate-50 rounded-3xl"
             >
                <div className="flex items-center gap-5">
                   <h2 className="text-4xl font-bold">Resume</h2>

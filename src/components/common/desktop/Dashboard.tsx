@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { LightIcon } from '../../utils/LightIcon';
 import { Link } from 'react-router-dom';
+import { Translate } from '../../utils/Translate';
 
 interface DashboardProps {
    handleClick: (section: string) => void;
@@ -32,6 +32,16 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
             },
          };
       },
+   };
+
+   const downloadResume = () => {
+      const fileUrl = `/documents/CV-en.pdf`;
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.download = 'Jarvin-CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
    };
 
    return (
@@ -148,11 +158,12 @@ export const Dashboard = ({ onAnimate, handleClick, clickedSection }: DashboardP
                         onClick={() => setLight(!light)}
                         className={`flex flex-col items-center justify-center w-24 h-24 rounded-2xl transition-all duration-300 ${light ? "bg-gray-700" : "bg-gray-200"}`}
                      >
-                        <LightIcon light={light} className="w-16 h-16 transition-all duration-500 hover:scale-[1.2] left-1/2 top-1/2" />
+                        <Translate light={light} className="w-16 h-16 transition-all duration-500 hover:scale-[1.2] left-1/2 top-1/2" />
                      </div>
                   </motion.div>
                   <motion.section
                      initial={{ x: 0, y: 1000 }}
+                     onClick={() => downloadResume()}
                      animate={onAnimate ? { x: -350, y: -300, opacity: 0, transition: { duration: 1 } } : { x: 0, y: 0, opacity: 1, transition: { duration: 0.3 } }}
                      className="flex flex-col items-center justify-center cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-linear h-44 w-28"
                   >

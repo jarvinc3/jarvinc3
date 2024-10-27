@@ -40,11 +40,11 @@ export const Contact = ({ clickedSection, handleClick, onAnimate }: ContactProps
       <div id="contact" className="absolute flex w-full h-full py-20">
          <section className="flex items-end justify-center w-1/3 h-full">
             <motion.div
-               initial={{ translateX: -1500 }}
+               initial={{ translateX: -2000 }}
                animate={
                   clickedSection === "contact"
                      ? { translateX: 0, transition: { duration: 1, delay: 0.5 } }
-                     : { translateX: -1000, transition: { duration: 1, } }
+                     : { translateX: -2000, transition: { duration: 1, } }
                }
                className="absolute flex flex-col justify-between p-10 w-[45%] h-[80%] shadow-2xl left-20 bg-slate-50 rounded-3xl"
             >
