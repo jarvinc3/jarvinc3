@@ -1,11 +1,5 @@
+import { useSectionClick } from '@/hooks/useSectionClick';
 import { motion } from 'framer-motion';
-import Navbar from '../../utils/Navbar';
-
-interface ResumeProps {
-   clickedSection: string | null;
-   handleClick: (section: string) => void;
-   onAnimate: boolean;
-}
 
 const skills = [
    { name: "HTML", icon: "/skills/html.svg" },
@@ -28,13 +22,15 @@ const skills = [
    { name: "Responsive", icon: "/skills/responsive.svg" },
 ];
 
-export const Resume = ({ clickedSection, handleClick, onAnimate }: ResumeProps) => {
+export const Resume = () => {
+   const { clickedSection } = useSectionClick();
+   
    return (
       <div id='resume' className="absolute flex w-full h-full py-20">
          <section className="flex flex-col items-center justify-center w-1/3 h-full gap-12">
          </section>
          <section className={`flex items-end justify-center w-1/3 h-full ${clickedSection === "resume" ? "" : "opacity-0"}`}>
-            <Navbar handleClick={handleClick} onAnimate={onAnimate} clickedSection={clickedSection} />
+            {/* <Navbar /> */}
          </section>
          <section className="flex items-center justify-center w-1/3 h-full pr-20">
             <motion.div

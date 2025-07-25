@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -18,33 +16,20 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
   width: 0px;
   background: transparent;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .main {
   background: url("/bg-white.jpg");
 }
 
-@media (max-width: 1279px) {
-  .desktop {
-    display: none;
-  }
-}
-@media (min-width: 1280px) {
-  .responsive {
-    display: none;
-  }
-}
-
 .shadow-type {
   box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px #aeaec0 40%;
+}
+
+.card {
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
 }

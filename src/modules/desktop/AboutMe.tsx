@@ -1,13 +1,10 @@
+import { useSectionClick } from '@/hooks/useSectionClick';
+import { Section } from '@/types/Section.types';
 import { motion } from 'framer-motion';
-import Navbar from '../../utils/Navbar';
 
-interface AboutMeProps {
-   clickedSection: string | null;
-   handleClick: (section: string) => void;
-   onAnimate: boolean;
-}
+export const AboutMe = () => {
+   const { clickedSection } = useSectionClick();
 
-export const AboutMe = ({ clickedSection, handleClick, onAnimate }: AboutMeProps) => {
    return (
       <div id='about' className="absolute flex w-full h-full py-20">
          <section className="flex items-center justify-center w-1/3 h-full">
@@ -30,8 +27,8 @@ export const AboutMe = ({ clickedSection, handleClick, onAnimate }: AboutMeProps
                <div className="w-full h-1 bg-[#60a5fa] rounded-full "></div>
             </motion.div>
          </section>
-         <section className={`flex items-end justify-center w-1/3 h-full ${clickedSection === "about" ? "" : "opacity-0"}`}>
-            <Navbar handleClick={handleClick} onAnimate={onAnimate} clickedSection={clickedSection} />
+         <section className={`flex items-end justify-center w-1/3 h-full ${clickedSection === Section.About ? "" : "opacity-0"}`}>
+            {/* <Navbar /> */}
          </section>
          <section className="flex flex-col items-center justify-center w-1/3 h-full gap-12">
             <motion.div

@@ -1,13 +1,9 @@
+import { useSectionClick } from '@/hooks/useSectionClick';
 import { motion } from 'framer-motion';
-import Navbar from '../../utils/Navbar';
 
-interface WorksProps {
-   clickedSection: string | null;
-   handleClick: (section: string) => void;
-   onAnimate: boolean;
-}
-
-export const Works = ({ clickedSection, handleClick, onAnimate }: WorksProps) => {
+export const Works = () => {
+   const { clickedSection } = useSectionClick();
+   
    return (
       <div id="works" className="absolute flex w-full h-full py-20">
          <section className="flex flex-col items-center justify-center w-1/3 h-full gap-10">
@@ -65,7 +61,7 @@ export const Works = ({ clickedSection, handleClick, onAnimate }: WorksProps) =>
             </motion.div>
          </section>
          <section className={`flex items-end justify-center w-1/3 h-full ${clickedSection === "works" ? "" : "opacity-0"}`}>
-            <Navbar handleClick={handleClick} onAnimate={onAnimate} clickedSection={clickedSection} />
+            {/* <Navbar /> */}
          </section>
          <section className="flex flex-col items-center justify-center w-1/3 h-full gap-12">
             <motion.div
