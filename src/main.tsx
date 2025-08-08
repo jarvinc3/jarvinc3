@@ -1,30 +1,27 @@
-// main.tsx
-import { Home } from "@/pages/Home";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { SectionProvider } from "./components/SectionContext";
-import './embla.css';
-import "./index.css";
+import { SectionProvider } from "@/components/lib/SectionContext";
+import { ThemeProvider } from "@/components/lib/theme-provider";
+import "@/index.css";
+import { App } from "@/modules/App";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { TranslateProvider } from "./components/lib/TranslateContext";
 
-const router = createBrowserRouter(
-  [
-    {
-      path: "/",
-      element: <Home />,
-    },
-  ],
-  {
-    future: {
-      v7_relativeSplatPath: true,
-    },
-  }
-);
+const getBrowserLang = (): 'en' | 'es' => {
+  const lang = navigator.language || navigator.languages[0] || 'en';
+  return lang.startsWith('es') ? 'es' : 'en';
+};
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <SectionProvider>
-      <RouterProvider router={router} />
-    </SectionProvider>
-  </React.StrictMode>
-);
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <BrowserRouter>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <TranslateProvider initialLang={getBrowserLang()}>
+          <SectionProvider>
+            <App />
+          </SectionProvider>
+        </TranslateProvider>
+      </ThemeProvider>
+    </BrowserRouter>
+  </StrictMode>,
+)
