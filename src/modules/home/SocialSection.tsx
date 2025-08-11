@@ -8,7 +8,7 @@ export const SocialSection = ({ ...props }: SectionProps) => {
    const { t } = useTranslate();
 
    const SocialIcon = ({ icon }: { icon: string }) => (
-      <div className="neu-button cursor-pointer p-1 rounded-full flex items-center justify-center hover:scale-105 hover:text-primary">
+      <div className="neu-button cursor-pointer p-1 !rounded-2xl flex items-center justify-center hover:scale-105 hover:text-primary">
          <Icon icon={icon} className="size-7" />
       </div>
    );
@@ -17,8 +17,8 @@ export const SocialSection = ({ ...props }: SectionProps) => {
       <Card
          {...props}
       >
-         <div className="group relative h-full w-full flex flex-col justify-between gap-6 p-4 transition-all duration-300 ease-linear">
-            <div className="card-secondary h-full grid grid-cols-2 gap-4 p-2 md:p-4">
+         <div className="group relative h-full w-full flex flex-col justify-between gap-6 p-2 md:p-4 transition-all duration-300 ease-linear">
+            <div className="card-secondary h-full !rounded-3xl grid grid-cols-2 gap-2 md:gap-4 p-2 md:p-4">
                {[
                   "line-md:github-loop",
                   "line-md:linkedin",
@@ -28,7 +28,7 @@ export const SocialSection = ({ ...props }: SectionProps) => {
                   <SocialIcon key={icon} icon={icon} />
                ))}
             </div>
-            <div>
+            <div className="p-1">
                <p className="text-sm text-primary-foreground">{t("home.stay")}</p>
                <h2 className="text-2xl font-semibold text-primary-foreground">{t("home.profiles")}</h2>
                <Button variant="icon" />

@@ -11,12 +11,12 @@ import { ServicesSection } from "./ServicesSection";
 import { SocialSection } from "./SocialSection";
 import { TogetherSection } from "./TogetherSection";
 
-export const Home = () => {
+const Home = () => {
    const { setClickedSection } = useSectionClick();
    const { isMobile, isTablet, isDesktop } = useResponsive();
 
    return (
-      <motion.div 
+      <motion.div
          exit={{ opacity: 0 }}
          className={cn(
             "container mx-auto w-screen min-h-screen md:h-screen relative p-6 xl:p-20 overflow-y-auto overflow-x-hidden scrollbar-hidden md:overflow-hidden text-foreground",
@@ -31,7 +31,7 @@ export const Home = () => {
             onClick={() => setClickedSection(Section.ABOUT)}
          />
          <ActionsSection
-            className="hidden xl:block md:row-span-2 md:col-span-2 md:row-start-3 xl:col-span-2 xl:col-start-3 xl:row-start-1 xl:row-span-1"
+            className="col-span-2 row-span-2 md:col-span-3 xl:col-span-2 xl:col-start-3 xl:row-start-1 xl:row-span-1 xl:block"
             type="base"
             animate="up"
             section={Section.HOME}
@@ -41,7 +41,7 @@ export const Home = () => {
             type="base"
             animate={isMobile || isTablet ? 'left' : "static"}
             section={Section.HOME}
-            onClick={() => setClickedSection(Section.CREDENTIALS)}
+            onClick={() => setClickedSection(Section.ABOUT)}
          />
          <ProjectsSection
             className="row-span-2 row-start-3 xl:row-start-2 xl:col-start-4"
@@ -74,3 +74,5 @@ export const Home = () => {
       </motion.div>
    );
 };
+
+export default Home;

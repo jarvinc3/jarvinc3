@@ -1,9 +1,9 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
-import type { SectionProps } from "../App";
 import { DownloadCV } from "@/components/lib/downloadCV";
 import { ThemeToggle } from "@/components/lib/theme-toggle";
 import { Card } from "@/components/ui/card";
 import { useTranslate } from "@/hooks/use-translate";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import type { SectionProps } from "../App";
 
 export const ActionsSection = ({ ...props }: SectionProps) => {
    const { lang, toggleLang } = useTranslate();
@@ -11,7 +11,7 @@ export const ActionsSection = ({ ...props }: SectionProps) => {
       <Card
          {...props}
       >
-         <div className="h-full w-full grid grid-cols-3 gap-4 p-4">
+         <div className="h-32 xl:h-full w-full grid grid-cols-3 gap-4 p-4">
             <DownloadCV />
 
             <div

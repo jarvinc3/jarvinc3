@@ -1,4 +1,4 @@
-import TranslateContext, { type TranslateContextType } from "@/components/lib/TranslateContext";
+import TranslateContext, { type TranslateContextType } from "@/components/lib/translate-context";
 import { useContext } from "react";
 
 export const useTranslate = (): TranslateContextType => {

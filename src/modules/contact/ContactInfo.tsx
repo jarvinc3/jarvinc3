@@ -1,3 +1,4 @@
+import { Section } from "@/components/types/section.types";
 import { Card } from "@/components/ui/card";
 import { useTranslate } from "@/hooks/use-translate";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -13,11 +14,34 @@ export const ContactInfo = ({ ...props }: SectionProps) => {
    );
 
    return (
-      <Card
+      <div
          {...props}
       >
-         <div className="relative h-full w-full flex flex-col md:grid md:grid-cols-2 xl:flex xl:flex-col gap-6 md:gap-16 md:p-8 p-4 transition-all duration-300 ease-linear">
-            <div className="flex flex-col gap-6 md:gap-10">
+         <div className="relative h-full w-full flex flex-col md:grid md:grid-cols-2 xl:flex xl:flex-col xl:justify-between gap-6 md:gap-10 pt-5 md:pt-10 xl:pt-0 xl:pr-8 transition-all duration-300 ease-linear">
+            <Card
+               type="base"
+               animate="left"
+               section={Section.CONTACT}
+               className="flex flex-col gap-4 md:gap-6 !rounded-2xl p-4 h-full"
+            >
+               <h2 className="text-lg md:text-xl font-semibold text-primary-foreground">{t("contact.social")}</h2>
+               <div className="grid grid-cols-4 md:grid-cols-1 xl:grid-cols-2 gap-4">
+                  {[
+                     "line-md:github-loop",
+                     "line-md:linkedin",
+                     "line-md:instagram",
+                     "basil:gmail-outline"
+                  ].map((icon) => (
+                     <SocialIcon key={icon} icon={icon} />
+                  ))}
+               </div>
+            </Card>
+            <Card
+               type="base"
+               animate="bottom"
+               section={Section.CONTACT}
+               className="flex flex-col gap-6 md:gap-10 !rounded-2xl p-4 h-full"
+            >
                <h2 className="text-lg md:text-xl font-semibold text-primary-foreground">{t("contact.contact")}</h2>
                <div className="flex flex-col gap-6 md:gap-10">
                   <div className="flex items-center gap-2">
@@ -63,21 +87,8 @@ export const ContactInfo = ({ ...props }: SectionProps) => {
                      </div>
                   </div>
                </div>
-            </div>
-            <div className="flex flex-col gap-4">
-               <h2 className="text-lg md:text-xl font-semibold text-primary-foreground">{t("contact.social")}</h2>
-               <div className="grid grid-cols-4 md:grid-cols-1 xl:grid-cols-4 gap-4">
-                  {[
-                     "line-md:github-loop",
-                     "line-md:linkedin",
-                     "line-md:instagram",
-                     "basil:gmail-outline"
-                  ].map((icon) => (
-                     <SocialIcon key={icon} icon={icon} />
-                  ))}
-               </div>
-            </div>
+            </Card>
          </div>
-      </Card>
+      </div>
    )
 }

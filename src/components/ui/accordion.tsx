@@ -116,12 +116,12 @@ export const AccordionTrigger = ({ children }: AccordionTriggerProps) => {
       <button
          type="button"
          onClick={toggle}
-         className="w-full cursor-pointer flex justify-between items-center font-semibold text-left text-base hover:underline"
+         className="w-full cursor-pointer flex justify-between font-semibold text-left text-base hover:underline"
       >
          {children}
          <Icon
             icon="material-symbols:expand-more-rounded"
-            className={`transition-transform duration-300 ease-in-out ${isOpen ? "rotate-180" : "rotate-0"
+            className={`mt-3 transition-transform duration-300 ease-in-out ${isOpen ? "rotate-180" : "rotate-0"
                }`}
          />
       </button>
@@ -142,14 +142,11 @@ export const AccordionContent = ({ children, className }: AccordionContentProps)
          {isOpen && (
             <motion.div
                key="content"
-               initial="collapsed"
-               animate="open"
-               exit="collapsed"
-               variants={{
-                  open: { height: "auto", opacity: 1 },
-                  collapsed: { height: 0, opacity: 0 },
-               }}
-               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+               initial={{ height: 0, opacity: 0 }}
+               animate={{ height: "auto", opacity: 1 }}
+               exit={{ height: 0, opacity: 0 }}
+               transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+               layout="position"
                className={`overflow-hidden ${className}`}
             >
                {children}

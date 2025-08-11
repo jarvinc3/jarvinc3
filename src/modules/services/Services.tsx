@@ -7,14 +7,14 @@ import { ProjectsSection } from '../home/ProjectsSection';
 import { TogetherSection } from '../home/TogetherSection';
 import { ServicesSection } from './ServicesSection';
 
-export const Services = () => {
+const Services = () => {
    const { setClickedSection } = useSectionClick();
 
    return (
       <motion.div
          exit={{ opacity: 0 }}
          className={cn(
-            "container mx-auto w-screen min-h-screen md:h-screen relative p-6 xl:p-20 overflow-y-auto overflow-x-hidden scrollbar-hidden md:overflow-hidden text-foreground",
+            "container mx-auto w-screen min-h-screen md:h-screen relative p-6 pl-12 xl:pl-0 xl:p-20 overflow-y-auto overflow-x-hidden scrollbar-hidden md:overflow-hidden text-foreground",
             "grid gap-4 md:gap-6 grid-cols-2 md:grid-cols-3 md:grid-rows-3 xl:grid-cols-4")}
       >
          <ServicesSection
@@ -42,8 +42,10 @@ export const Services = () => {
             type="base"
             animate="static"
             section={Section.SERVICES}
-            onClick={() => setClickedSection(Section.CREDENTIALS)}
+            onClick={() => setClickedSection(Section.ABOUT)}
          />
       </motion.div>
    )
 }
+
+export default Services;

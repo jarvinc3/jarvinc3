@@ -49,7 +49,7 @@ export const DownloadCV = ({isNavbar}: {isNavbar?: boolean}) => {
             ) : (
                <>
                   <Icon icon="ic:round-download" className={`${isNavbar ? 'size-8' : 'size-10'}`} />
-                  {!isNavbar && <Icon icon="academicons:cv" className="size-10" />}
+                  <Icon icon="academicons:cv" className="size-10 hidden md:block" />
                </>
             )}
          </motion.div>

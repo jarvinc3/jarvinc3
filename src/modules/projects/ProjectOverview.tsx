@@ -166,7 +166,7 @@ export const ProjectOverview = ({ projectData, currentProject }: ProjectOverview
                </AccordionItem>
             </Card>
          </Accordion>
-         <div className="hidden xl:grid grid-cols-1 xl:grid-cols-2 gap-12">
+         <div className="hidden xl:grid grid-cols-1 xl:grid-cols-2 gap-6">
             {/* Description */}
             <Card
                className="p-8"

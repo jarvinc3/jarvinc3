@@ -1,6 +1,5 @@
 import { aboutTranslations } from '@/modules/about/translations';
 import { contactTranslations } from '@/modules/contact/translate';
-import { credentialsTranslations } from '@/modules/credentials/translations';
 import { homeTranslations } from '@/modules/home/translations';
 import { projectsTranslations } from '@/modules/projects/translations';
 import { servicesTranslations } from '@/modules/services/translations';
@@ -29,7 +28,6 @@ export const translations = {
       general: generalTranslations.en,
       home: homeTranslations.en,
       about: aboutTranslations.en,
-      credentials: credentialsTranslations.en,
       services: servicesTranslations.en,
       projects: projectsTranslations.en,
       contact: contactTranslations.en
@@ -38,7 +36,6 @@ export const translations = {
       general: generalTranslations.es,
       home: homeTranslations.es,
       about: aboutTranslations.es,
-      credentials: credentialsTranslations.es,
       services: servicesTranslations.es,
       projects: projectsTranslations.es,
       contact: contactTranslations.es

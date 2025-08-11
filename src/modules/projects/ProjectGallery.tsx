@@ -40,26 +40,25 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
    };
 
    return (
-      <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 p-4 text-primary-foreground">
-         {/* Main Slider */}
+      <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 text-primary-foreground">
          <Card
             type="custom"
             animate="up"
             projectSection={ProjectSection.GALLERY}
             className="relative w-full h-full overflow-hidden p-2"
          >
-            <div className="absolute top-4 right-3 left-3 z-50 flex items-center justify-between">
-               <span className="card-secondary px-3 py-1 text-sm font-bold">
+            <div className="absolute top-4 right-3 left-3 z-50 flex justify-between">
+               <span className="card-secondary h-fit px-3 py-1 text-sm font-bold">
                   Online Shop
                </span>
                <button
-                  onClick={() => setIsAutoplay(!isAutoplay)}
-                  className="neu-button flex items-center gap-2 px-4 py-2 w-fit"
+                  onClick={toggleFullscreen}
+                  className="cursor-pointer text-primary bg-white/30 rounded-full p-3"
                >
-                  <Icon icon={isAutoplay ? "mdi:pause" : "mdi:play"} className="w-5 h-5" />
+                  <Icon icon={isFullscreen ? "fluent:full-screen-minimize-32-filled" : "hugeicons:full-screen"} className="w-5 h-5" />
                </button>
             </div>
-            {/* Background Image with Overlay */}
+
             <div className="absolute inset-0 rounded-xl overflow-hidden">
                <img
                   src={images[currentImage]}
@@ -69,74 +68,48 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-foreground/40" />
             </div>
 
-            {/* Navigation Arrows */}
-            <button
-               onClick={() => setCurrentImage((prev) => (prev - 1 + images.length) % images.length)}
-               className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm text-primary transition-all duration-200 hover:scale-110"
-            >
-               <Icon icon="mdi:chevron-left" className="w-6 h-6" />
-            </button>
+            <div className="absolute bottom-0 left-0 right-0 z-10 px-4 xl:px-6 flex flex-col justify-end gap-4">
+               <h2 className="text-3xl xl:text-5xl font-bold text-primary tracking-tight leading-tight">
+                  {projectTitle}
+               </h2>
 
-            <button
-               onClick={() => setCurrentImage((prev) => (prev + 1) % images.length)}
-               className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm text-primary transition-all duration-200 hover:scale-110"
-            >
-               <Icon icon="mdi:chevron-right" className="w-6 h-6" />
-            </button>
+               <p className="text-lg text-slate-200 shadow-sm tracking-tight leading-relaxed">
+                  {imageDescriptions[currentImage]}
+               </p>
 
-            {/* Content Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 z-10 px-6 xl:px-12  flex flex-row items-end justify-between gap-6">
-               {/* Project Info */}
-               <div className="flex-1 max-w-2xl">
-                  <h2 className="text-3xl xl:text-5xl font-bold text-primary  leading-tight">
-                     {projectTitle}
-                  </h2>
+               <div className="flex items-center gap-6 mb-2 md:mb-6">
+                  <div className="hidden md:flex items-center gap-2 text-secondary">
+                     <Icon icon="mdi:eye" className="size-5 xl:text-primary" />
+                     <span>{views.toLocaleString()} {t("projects.views")}</span>
+                  </div>
 
-                  <p className="text-lg text-slate-200 leading-relaxed mb-6 max-w-xl">
-                     {imageDescriptions[currentImage]}
-                  </p>
+                  <button
+                     onClick={() => (setIsLiked(!isLiked), setLikes(prev => isLiked ? prev - 1 : prev + 1))}
+                     className={`hidden md:flex items-center gap-2 cursor-pointer transition-colors ${isLiked
+                        ? 'text-red-400'
+                        : 'text-secondary hover:text-red-400'
+                        }`}
+                  >
+                     <Icon
+                        icon="mdi:heart"
+                        className={`w-5 h-5 ${isLiked ? 'fill-current' : ''}`}
+                     />
+                     <span>{likes}</span>
+                  </button>
 
-                  {/* Metrics */}
-                  <div className="flex items-center gap-6 mb-6">
-                     <div className="hidden md:flex items-center gap-2 text-secondary">
-                        <Icon icon="mdi:eye" className="size-5 xl:text-primary" />
-                        <span>{views.toLocaleString()} {t("projects.views")}</span>
-                     </div>
+                  <button className="hidden md:flex items-center gap-2 cursor-pointer text-secondary hover:text-primary hover:scale-105 transition-all">
+                     <Icon icon="mdi:share" className="w-5 h-5" />
+                     <span className="font-medium">Compartir</span>
+                  </button>
 
-                     <button
-                        onClick={() => (setIsLiked(!isLiked), setLikes(prev => isLiked ? prev - 1 : prev + 1))}
-                        className={`hidden md:flex items-center gap-2 cursor-pointer transition-colors ${isLiked
-                           ? 'text-red-400'
-                           : 'text-secondary hover:text-red-400'
-                           }`}
-                     >
-                        <Icon
-                           icon="mdi:heart"
-                           className={`w-5 h-5 ${isLiked ? 'fill-current' : ''}`}
-                        />
-                        <span>{likes}</span>
-                     </button>
-
-                     <button className="flex items-center gap-2 cursor-pointer text-secondary hover:text-primary hover:scale-105 transition-all">
-                        <Icon icon="mdi:share" className="w-5 h-5" />
-                        <span className="font-medium">Compartir</span>
-                     </button>
+                  <div className="w-full text-center font-medium text-lg md:hidden text-primary">
+                     {currentImage + 1} / {images.length}
                   </div>
                </div>
-
-               {/* Controls */}
-               <button
-                  onClick={toggleFullscreen}
-                  className="neu-button cursor-pointer p-3 mb-4"
-               >
-                  <Icon icon={isFullscreen ? "fluent:full-screen-minimize-32-filled" : "hugeicons:full-screen"} className="w-5 h-5" />
-               </button>
             </div>
          </Card>
 
-         {/* Thumbnail Navigation */}
          <div className="relative z-10 w-full space-y-4">
-            {/* Navigation Controls */}
             <div className="grid grid-cols-2 md:grid-cols-3 items-center">
                <Card
                   type="custom"
@@ -159,14 +132,18 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
                   type="custom"
                   animate="static2"
                   projectSection={ProjectSection.GALLERY}
-                  className="hidden md:block text-center"
+                  className="hidden md:flex items-center justify-center gap-2"
                >
-                  <div className="font-medium text-lg">
-                     {currentImage + 1} / {images.length}
-                  </div>
-                  <div className="text-secondary-foreground text-sm">
-                     {t("projects.view")} {currentImage + 1}
-                  </div>
+                  {images.map((_, index) => (
+                     <button
+                        key={index}
+                        onClick={() => setCurrentImage(index)}
+                        className={`cursor-pointer transition-all duration-300 ${index === currentImage
+                           ? 'w-12 h-3 bg-info rounded-full'
+                           : 'w-3 h-3 bg-foreground/30 hover:bg-foreground/50 rounded-full'
+                           }`}
+                     />
+                  ))}
                </Card>
 
                <Card
@@ -175,7 +152,7 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
                   projectSection={ProjectSection.GALLERY}
                   className="flex items-center justify-end"
                >
-                  <div className="card-secondary w-fit px-4 py-2 flex items-center gap-2">
+                  <div className="card-secondary w-fit px-4 py-2 flex gap-2">
                      <div className="flex items-center gap-2">
                         <Icon icon="hugeicons:eye" className="size-5" />
                         <span>{views.toLocaleString()}</span>
@@ -183,14 +160,16 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
 
                      <button
                         onClick={() => (setIsLiked(!isLiked), setLikes(prev => isLiked ? prev - 1 : prev + 1))}
-                        className={`flex items-center gap-2 transition-colors ${isLiked
-                           ? 'text-red-400'
-                           : 'hover:text-red-400'
-                           }`}
+                        className={`border-l-2 border-disabled-foreground cursor-pointer pl-2 flex items-center gap-2 transition-colors 
+                           ${isLiked
+                              ? 'text-red-400'
+                              : 'hover:text-red-400'
+                           }
+                        `}
                      >
                         <Icon
                            icon={isLiked ? "mdi:heart" : "solar:heart-outline"}
-                           className="w-5 h-5"
+                           className="w-5 h-5 animate-bounce"
                         />
                         <span>{likes}</span>
                      </button>
@@ -198,7 +177,6 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
                </Card>
             </div>
 
-            {/* Thumbnails Carousel */}
             <Card
                type="custom"
                animate="bottom"
@@ -229,39 +207,18 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
                            }`}
                         />
 
-                        {/* Thumbnail Title */}
                         <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-foreground/80 to-transparent">
                            <div className="text-primary text-xs font-medium truncate">
                               {projectTitle}
                            </div>
                         </div>
 
-                        {/* Active Indicator */}
                         {index === currentImage && (
                            <div className="absolute -bottom-0 left-1/2 -translate-x-1/2 w-full h-1 bg-info rounded-full shadow-lg" />
                         )}
                      </button>
                   ))}
                </div>
-            </Card>
-
-            {/* Progress Dots */}
-            <Card
-               type="custom"
-               animate="static2"
-               projectSection={ProjectSection.GALLERY}
-               className="flex items-center justify-center gap-2 mt-6"
-            >
-               {images.map((_, index) => (
-                  <button
-                     key={index}
-                     onClick={() => setCurrentImage(index)}
-                     className={`cursor-pointer transition-all duration-300 ${index === currentImage
-                        ? 'w-12 h-3 bg-info rounded-full'
-                        : 'w-3 h-3 bg-foreground/30 hover:bg-foreground/50 rounded-full'
-                        }`}
-                  />
-               ))}
             </Card>
          </div>
       </div>

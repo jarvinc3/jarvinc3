@@ -3,6 +3,7 @@ import { projectsData } from '@/components/types/projects.data';
 import type { Project } from '@/components/types/projects.types';
 import { ProjectSection, Section } from '@/components/types/section.types';
 import { Card } from '@/components/ui/card';
+import { useResponsive } from '@/hooks/use-responsive';
 import { useScrollNavigation } from '@/hooks/use-scrollNavigation';
 import { useSectionClick } from '@/hooks/use-section';
 import { useTranslate } from '@/hooks/use-translate';
@@ -12,6 +13,7 @@ import { useEffect, useState } from 'react';
 import ProjectGallery from './ProjectGallery';
 import { ProjectOverview } from './ProjectOverview';
 import { ProjectResults } from './ProjectResults';
+import { ProjectResultsMobile } from './ProjectResultsMoble';
 
 const SLIDES = [
    { icon: 'material-symbols-light:overview-outline-rounded', section: ProjectSection.OVERVIEW },
@@ -19,11 +21,11 @@ const SLIDES = [
    { icon: 'mdi:chart-bar', section: ProjectSection.RESULTS }
 ];
 
-export const ProjectCarousel = () => {
+const ProjectCarousel = () => {
    const { clickedProjectSection, setClickedProjectSection, goBack } = useSectionClick();
    const [currentProject, setCurrentProject] = useState<Project | null>();
    const { t, lang } = useTranslate();
-
+   const { isMobile, isTablet } = useResponsive();
    const index = SLIDES.findIndex(s => s.section === clickedProjectSection);
 
    const { isScrolling } = useScrollNavigation({
@@ -66,7 +68,9 @@ export const ProjectCarousel = () => {
       [ProjectSection.GALLERY]:
          <ProjectGallery images={currentProject.images} projectTitle={projectData.title} />,
       [ProjectSection.RESULTS]:
-         <ProjectResults currentProject={currentProject} />,
+         isMobile || isTablet
+            ? <ProjectResultsMobile currentProject={currentProject} />
+            : < ProjectResults currentProject={currentProject} />,
    };
 
    return (
@@ -74,7 +78,7 @@ export const ProjectCarousel = () => {
          tabIndex={-1}
          exit={{ opacity: 0 }
          }
-         className={cn("w-screen h-screen overflow-hidden bg-background text-foreground p-6 pl-13 md:p-10 md:pl-20 xl:p-20 xl:pl-28")}
+         className={cn("w-screen h-screen overflow-hidden bg-background text-foreground p-6 pl-10 md:p-10 xl:p-20 xl:pl-28")}
       >
 
          <div className="relative w-full h-full">
@@ -89,25 +93,21 @@ export const ProjectCarousel = () => {
             </AnimatePresence>
          </div>
 
-         <button className="absolute left-1/2 bottom-4 -translate-x-1/2 size-8 animate-bounce">
-            <Icon icon="line-md:chevron-down" className="cursor-pointer transition-all duration-300 ease-in-out hover:text-primary" />
-         </button>
-
-         <Card className="absolute top-1/2 -left-2 md:left-4 -translate-y-1/2 flex flex-col" animate="left" type='custom' section={Section.PROJECT}>
+         <Card className="fixed z-50 top-1/2 -left-2 xl:left-4 -translate-y-1/2 flex flex-col" animate="left" type='custom' section={Section.PROJECT}>
             <div className="flex flex-col items-center gap-4">
-               <div className="h-6 w-0.5 bg-stone-400" />
-               <button onClick={goBack} className='neu-button size-10 flex items-center justify-center pl-2 md:pl-0 !rounded-r-xl !rounded-l-none md:!rounded-xl'>
+               <div className="h-6 w-0.5 bg-stone-400 rounded-xl" />
+               <button onClick={goBack} className='neu-button size-10 flex items-center justify-center pl-2 xl:pl-0 !rounded-r-xl !rounded-l-none xl:!rounded-xl'>
                   <Icon icon="mdi:arrow-left" className="size-6" />
                </button>
-               <div className="h-6 w-0.5 bg-stone-400" />
+               <div className="h-6 w-0.5 bg-stone-400 rounded-t-xl" />
             </div>
             {SLIDES.map((slide, i) => (
                <div key={i} className='flex flex-col items-center gap-4'>
-                  <div className="h-6 w-0.5 bg-stone-400" />
+                  <div className="h-6 w-0.5 bg-stone-400 rounded-b-xl" />
                   <button
                      onClick={() => !isScrolling && setClickedProjectSection(slide.section)}
                      className={cn(
-                        'group relative size-10 flex items-center justify-center pl-2 md:pl-0 !rounded-r-xl !rounded-l-none md:!rounded-xl',
+                        'group relative size-10 flex items-center justify-center pl-2 xl:pl-0 !rounded-r-xl !rounded-l-none xl:!rounded-xl',
                         clickedProjectSection === slide.section ? 'card-primary' : 'neu-button'
                      )}
                   >
@@ -117,10 +117,12 @@ export const ProjectCarousel = () => {
                         <div className="bg-inherit rotate-45 p-1 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2" />
                      </div>
                   </button>
-                  <div className="h-6 w-0.5 bg-stone-400" />
+                  <div className="h-6 w-0.5 bg-stone-400 rounded-t-xl" />
                </div>
             ))}
          </Card>
       </motion.div>
    );
 };
+
+export default ProjectCarousel;

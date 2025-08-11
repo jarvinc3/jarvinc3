@@ -39,7 +39,7 @@ export const ProjectResults = ({ currentProject }: ProjectResultsProps) => {
             type="custom"
             animate="left"
             projectSection={ProjectSection.RESULTS}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
          >
             {Object.entries(currentProject.metrics).map(([key, value]) => {
                const IconComponent = metricIcons[key as keyof typeof metricIcons];

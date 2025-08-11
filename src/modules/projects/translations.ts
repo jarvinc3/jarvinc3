@@ -20,7 +20,7 @@ export const projectsTranslations = {
       description: 'Description',
       objectives: 'Objectives',
       techStack: 'Technology Stack',
-      techDescription: 'Technologies and tools used in development',
+      techDescription: 'Technologies used in development',
       developmentProcess: 'Development Process',
       timelineDescription: 'Timeline and project phases',
       resultsAndMetrics: 'Results and Metrics',
