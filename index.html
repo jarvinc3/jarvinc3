@@ -2,9 +2,59 @@
 <html lang="en" class="scroll-smooth" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/portfolio.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JarvinC3</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>JarvinC3 - Full Stack Developer Portfolio</title>
+    <meta name="description" content="JarvinC3 - Experienced Full Stack Developer specializing in React, TypeScript, and modern web technologies. View my portfolio and projects." />
+    <meta name="keywords" content="full stack developer, react developer, typescript, web development, portfolio, jarvinc3" />
+    <meta name="author" content="JarvinC3" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JarvinC3 - Full Stack Developer Portfolio" />
+    <meta property="og:description" content="Experienced Full Stack Developer specializing in React, TypeScript, and modern web technologies." />
+    <meta property="og:image" content="/portfolio.png" />
+    <meta property="og:url" content="https://jarvinc3.dev" />
+    <meta property="og:site_name" content="JarvinC3 Portfolio" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JarvinC3 - Full Stack Developer Portfolio" />
+    <meta name="twitter:description" content="Experienced Full Stack Developer specializing in React, TypeScript, and modern web technologies." />
+    <meta name="twitter:image" content="/portfolio.png" />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" href="/portfolio.png" />
+    <link rel="apple-touch-icon" href="/portfolio.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/src/main.tsx" as="script" />
+    <link rel="preload" href="/src/index.css" as="style" />
+    
+    <!-- DNS Prefetch for External Resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#ffffff" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "JarvinC3",
+      "jobTitle": "Full Stack Developer",
+      "url": "https://jarvinc3.dev",
+      "sameAs": [
+        "https://github.com/jarvinc3",
+        "https://linkedin.com/in/jarvinc3"
+      ],
+      "knowsAbout": ["React", "TypeScript", "JavaScript", "Node.js", "Web Development"]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

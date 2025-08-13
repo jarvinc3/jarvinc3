@@ -1,0 +1,26 @@
+{
+  "name": "JarvinC3 - Full Stack Developer Portfolio",
+  "short_name": "JarvinC3",
+  "description": "Full Stack Developer Portfolio showcasing React, TypeScript, and modern web technologies",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/portfolio.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/portfolio.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en-US"
+}

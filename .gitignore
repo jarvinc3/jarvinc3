@@ -26,5 +26,4 @@ dist-ssr
 # Dependency directories
 yarn.lock
 package-lock.json
-yarn.lock
 pnpm-lock.yaml
