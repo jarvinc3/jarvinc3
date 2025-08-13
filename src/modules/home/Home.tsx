@@ -33,7 +33,7 @@ const Home = () => {
          <ActionsSection
             className="col-span-2 row-span-2 md:col-span-3 xl:col-span-2 xl:col-start-3 xl:row-start-1 xl:row-span-1 xl:block"
             type="base"
-            animate="up"
+            animate={isDesktop ? "up" : 'bottom'}
             section={Section.HOME}
          />
          <CredentialSection
@@ -60,14 +60,14 @@ const Home = () => {
          <ServicesSection
             className="col-span-2 row-span-2 col-start-1 xl:col-start-2 row-start-5 xl:row-start-4"
             type="base"
-            animate="bottom"
+            animate={isDesktop ? "bottom" : 'left'}
             section={Section.HOME}
             onClick={() => setClickedSection(Section.SERVICES)}
          />
          <TogetherSection
             className="row-span-2 row-start-7 md:row-start-5 xl:row-start-4 xl:col-start-4"
             type="base"
-            animate="bottom2"
+            animate={isDesktop ? "bottom2" : 'right'}
             section={Section.HOME}
             onClick={() => setClickedSection(Section.CONTACT)}
          />

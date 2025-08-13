@@ -1,8 +1,8 @@
 import { cn } from '@/components/lib/utils';
-import { projectsData } from '@/components/types/projects.data';
 import { Section } from '@/components/types/section.types';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { useProjects } from '@/hooks';
 import { useTranslate } from '@/hooks/use-translate';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { motion } from 'framer-motion';
@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router';
 const Projects = () => {
    const { t, lang } = useTranslate();
    const navigate = useNavigate();
+   const { projects } = useProjects();
 
    return (
       <motion.div
@@ -30,7 +31,7 @@ const Projects = () => {
             <Icon icon="solar:star-fall-linear" className="size-11 md:size-16 rotate-180" />
          </Card>
 
-         {projectsData.map((project, index) => (
+         {projects.map((project, index) => (
             <Card
                key={project.id}
                className={`md:row-span-2 md:row-start-2 xl:col-span-2 xl:row-span-3 ${index === 0 ? 'md:row-span-2 md:row-start-2 xl:col-start-2 xl:row-start-2' :
@@ -89,7 +90,7 @@ const Projects = () => {
             {/* Bottom section */}
             <div className="mt-4 px-1.5 py-2.5">
                <span className="block text-lg font-bold text-center tracking-widest">
-                  {projectsData[0].translations[lang].title}
+                  {projects[0]?.translations[lang]?.title || 'Project Title'}
                </span>
                <div className="flex justify-between mt-5">
                   <div className="basis-1/3 text-center p-1">

@@ -1,7 +1,7 @@
 import { Section } from "@/components/types/section.types";
-import { skillsData } from "@/components/types/skills.data";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
+import { useSkills } from "@/hooks";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 const getLevelColor = (level: string) => {
@@ -20,9 +20,11 @@ const getLevelColor = (level: string) => {
 };
 
 export const SkillsGridSection = ({ className }: { className?: string }) => {
+   const { skills } = useSkills();
+
    return (
       <div className={className}>
-         {skillsData.map((category, index) => (
+         {skills.map((category, index) => (
             <Card
                key={index}
                type="custom"
@@ -47,7 +49,7 @@ export const SkillsGridSection = ({ className }: { className?: string }) => {
                            key={index}
                            className="card-secondary !rounded-lg p-4 mb-6 flex items-center justify-between"
                         >
-                           <td className="">
+                           <div className="">
                               <div className="flex items-center space-x-3">
                                  <div className="flex-shrink-0">
                                     <Icon icon={skill.icon} className="size-7" />
@@ -56,12 +58,12 @@ export const SkillsGridSection = ({ className }: { className?: string }) => {
                                     <div className="text-sm font-medium">{skill.name}</div>
                                  </div>
                               </div>
-                           </td>
-                           <td className="">
+                           </div>
+                           <div className="">
                               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${getLevelColor(skill.level)}`}>
                                  {skill.level}
                               </span>
-                           </td>
+                           </div>
                         </div>
                      ))}
                   </AccordionContent>

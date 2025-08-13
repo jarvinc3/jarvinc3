@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useAboutMe } from "@/hooks";
 import { useTranslate } from "@/hooks/use-translate";
 import type { SectionProps } from "../App";
 
 export const ProfileSection = ({ ...props }: SectionProps) => {
    const { t } = useTranslate();
+   const aboutMe = useAboutMe();
 
    return (
       <Card
@@ -19,8 +21,8 @@ export const ProfileSection = ({ ...props }: SectionProps) => {
             </div>
             <div className="md:w-1/2 h-full flex flex-col justify-center gap-5">
                <p className="text-secondary-foreground">{t("home.hello")}</p>
-               <h2 className="text-5xl font-semibold">{t("home.name")}</h2>
-               <p className="text-secondary-foreground">{t("home.description")}</p>
+               <h2 className="text-5xl font-semibold">{aboutMe.name} {aboutMe.last_name}</h2>
+               <p className="text-secondary-foreground">{aboutMe.short_description}</p>
                <Button variant="icon" />
             </div>
          </div>

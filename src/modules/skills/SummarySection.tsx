@@ -1,10 +1,12 @@
 import { cn } from "@/components/lib/utils";
-import { keyHighlights, skillsData, statGrid } from "@/components/types/skills.data";
 import { Card } from "@/components/ui/card";
+import { useSkills } from "@/hooks";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import type { SectionProps } from "../App";
 
 export const SummarySection = ({ ...props }: SectionProps) => {
+   const { skills, stats, highlights } = useSkills();
+   
    return (
       <Card
          {...props}
@@ -17,7 +19,7 @@ export const SummarySection = ({ ...props }: SectionProps) => {
 
          {/* Main Stats Grid */}
          <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6 mb-4 xl:mb-6">
-            {statGrid.map((stat, index) => (
+            {stats.map((stat, index) => (
                <div key={index} className="card-secondary p-2 py-4">
                   <div className="flex flex-col justify-center items-center gap-2 mb-4">
                      <div className="neu-button p-2 !rounded-lg flex items-center justify-center">
@@ -44,8 +46,8 @@ export const SummarySection = ({ ...props }: SectionProps) => {
                   Skills by Category
                </h3>
                <div className="space-y-3">
-                  {skillsData.map((category) => {
-                     const total = skillsData.reduce((acc, cat) => acc + cat.skills.length, 0);
+                  {skills.map((category) => {
+                     const total = skills.reduce((acc, cat) => acc + cat.skills.length, 0);
                      const percentage = Math.round((category.skills.length / total) * 100);
                      const expertCount = category.skills.filter(s => s.level === 'Expert').length;
 
@@ -76,7 +78,7 @@ export const SummarySection = ({ ...props }: SectionProps) => {
                   Key Highlights
                </h3>
                <div className="grid grid-cols-1 gap-4 text-center">
-                  {keyHighlights.map((highlight, index) => (
+                  {highlights.map((highlight, index) => (
                      <div key={index} className="card-base !rounded-lg px-4 p-2 flex justify-between items-center">
                         <div className={`neu-button px-4 py-2 !rounded-lg text-3xl mb-1 ${highlight.countColor}`}>
                            {highlight.count}

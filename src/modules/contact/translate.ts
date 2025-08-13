@@ -9,10 +9,6 @@ export const contactTranslations = {
       mail: 'MAIL ADDRESSES',
       number: 'CONTACT NUMBER',
       location: 'CURRENT LOCATION',
-      street: '#30 Villa carolina 2da',
-      city: 'Hato Nuevo',
-      state: 'Santo Domingo',
-      country: 'Dominican Republic',
       social: 'SOCIAL MEDIA',
    },
    es: {
@@ -25,10 +21,6 @@ export const contactTranslations = {
       mail: 'DIRECCIONES DE CORREO',
       number: 'NUMERO DE CONTACTO',
       location: 'UBICACIÓN ACTUAL',
-      street: '#30 Villa carolina 2da',
-      city: 'Hato Nuevo',
-      state: 'Santo Domingo',
-      country: 'Republica Dominicana',
       social: 'REDES SOCIALES',
    },
 }; 

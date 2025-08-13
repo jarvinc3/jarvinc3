@@ -3,6 +3,7 @@ import { contactTranslations } from '@/modules/contact/translate';
 import { homeTranslations } from '@/modules/home/translations';
 import { projectsTranslations } from '@/modules/projects/translations';
 import { servicesTranslations } from '@/modules/services/translations';
+import { skillsTranslations } from '@/modules/skills/translate';
 
 const generalTranslations = {
    en: {
@@ -30,7 +31,8 @@ export const translations = {
       about: aboutTranslations.en,
       services: servicesTranslations.en,
       projects: projectsTranslations.en,
-      contact: contactTranslations.en
+      contact: contactTranslations.en,
+      skills: skillsTranslations.en
    },
    es: {
       general: generalTranslations.es,
@@ -38,7 +40,8 @@ export const translations = {
       about: aboutTranslations.es,
       services: servicesTranslations.es,
       projects: projectsTranslations.es,
-      contact: contactTranslations.es
+      contact: contactTranslations.es,
+      skills: skillsTranslations.es
    },
 };
 

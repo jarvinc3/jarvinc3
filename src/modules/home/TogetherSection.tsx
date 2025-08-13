@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { useTranslate } from "@/hooks/use-translate";
+import type { SectionProps } from "@/modules/App";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import type { SectionProps } from "../App";
 
 export const TogetherSection = ({ ...props }: SectionProps) => {
    const { t, lang } = useTranslate();

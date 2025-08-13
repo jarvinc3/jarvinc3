@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useServices } from "@/hooks";
 import { useTranslate } from "@/hooks/use-translate";
 import type { SectionProps } from "../App";
 
 export const ServicesSection = ({ ...props }: SectionProps) => {
    const { t } = useTranslate();
+   const services = useServices();
 
    const ServiceButton = ({ imgSrc, label }: { imgSrc: string; label: string }) => (
       <button className="group/button relative cursor-pointer flex items-center justify-center p-2 rounded-md drop-shadow-xl from-gray-800 text-white font-semibold hover:translate-y-2 transition-all duration-250 hover:from-[#331029] hover:to-[#310413]">
@@ -21,9 +23,13 @@ export const ServicesSection = ({ ...props }: SectionProps) => {
       >
          <div className="group relative cursor-pointer h-full w-full flex flex-col justify-between gap-6 p-6">
             <div className="h-full grid grid-cols-3 gap-4 p-4">
-               <ServiceButton imgSrc="https://img.icons8.com/?size=100&id=2778&format=png&color=000000" label="Frontend" />
-               <ServiceButton imgSrc="https://img.icons8.com/?size=100&id=116827&format=png&color=000000" label="Backend" />
-               <ServiceButton imgSrc="https://img.icons8.com/?size=100&id=24870&format=png&color=000000" label="Web Design" />
+               {services.map((service) => (
+                  <ServiceButton 
+                     key={service.id} 
+                     imgSrc={service.icon} 
+                     label={service.service} 
+                  />
+               ))}
             </div>
             <div>
                <p className="text-sm text-primary-foreground">{t("home.specialization")}</p>

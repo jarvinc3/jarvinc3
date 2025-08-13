@@ -1,8 +1,7 @@
 import { cn } from "@/components/lib/utils";
 import { Section } from "@/components/types/section.types";
-import { skillsData } from "@/components/types/skills.data";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import { useSkills } from "@/hooks";
 import { useResponsive } from "@/hooks/use-responsive";
 import { useSectionClick } from "@/hooks/use-section";
 import { useTranslate } from "@/hooks/use-translate";
@@ -10,26 +9,27 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { motion } from 'framer-motion';
 
 export const SkillsCard = () => {
-   const { setClickedSection } = useSectionClick();
+   const { clickedSection } = useSectionClick();
    const { isMobile } = useResponsive();
+   const { skills } = useSkills();
    const { t } = useTranslate();
 
    const SkillButton = ({ icon, label }: { icon: string; label: string }) => (
       <div className="tooltip-container inline-flex items-center relative group">
-         <Icon icon={icon} className="size-8 md:size-10 xl:size-12 cursor-pointer text-muted group-hover:scale-110 group-hover:text-foreground transition-all duration-250" />
+         <Icon icon={icon} className="size-8 md:size-10 cursor-pointer text-muted group-hover:scale-110 group-hover:text-foreground transition-all duration-250" />
          <span className="absolute pointer-events-none opacity-0 group-hover:opacity-100 px-4 py-2 text-sm font-medium text-white bg-[#1A1F2C] backdrop-blur-sm rounded-lg shadow-lg border border-neutral-800/10 transition-all duration-200 ease-in-out whitespace-nowrap z-50 bottom-full left-1/2 -translate-x-1/2 -translate-y-2 mb-2">
             {label}
-            <span className="absolute w-2 h-2 bg-[#1A1F2C] transform rotate-45 bottom-[-4px] left-1/2 -translate-x-1/2" />
+            <span className="absolute bg-[#1A1F2C] transform rotate-45 bottom-[-4px] left-1/2 -translate-x-1/2" />
          </span>
       </div>
    );
 
    return (
       <motion.section
-         initial={{ opacity: 0, y: 100 }}
-         animate={{ opacity: 1, y: 0 }}
-         exit={{ opacity: 0, y: -100 }}
-         transition={{ duration: 0.5 }}
+         initial={{ x: '100vw' }}
+         animate={clickedSection === Section.ABOUT
+            ? { x: 0, transition: { duration: 0.8 } }
+            : { x: '100vw', transition: { duration: 0.5 } }}
          className="space-y-4 relative"
       >
          <AccordionItem value="item-4" className="card-base !rounded-2xl px-4 pt-6">
@@ -41,10 +41,10 @@ export const SkillsCard = () => {
             <AccordionContent className="relative flex flex-col items-end space-y-3 font-sans">
                <table className="w-full">
                   <tbody className="size-full flex flex-col gap-6 mb-6">
-                     {skillsData.map((category, index) => (
-                        <tr key={index} className="flex justify-between gap-6">
+                     {skills.map((category, index) => (
+                        <tr key={index} className="flex justify-between md:items-center gap-6">
                            <td className="text-lg font-semibold">{category.category}:</td>
-                           <td className={cn("flex flex-wrap gap-6  card-secondary p-2 !rounded-lg", isMobile && "grid gap-4 grid-cols-4")}>
+                           <td className={cn("flex flex-wrap gap-6 card-secondary p-2 !rounded-lg", isMobile && "grid gap-4 grid-cols-4")}>
                               {category.skills.map((skill, index) => (
                                  <SkillButton icon={skill.icon} label={skill.name} key={index} />
                               ))}
@@ -53,10 +53,6 @@ export const SkillsCard = () => {
                      ))}
                   </tbody>
                </table>
-               <div onClick={() => setClickedSection(Section.SKILLS)} className="neu-button !rounded-xl w-full md:w-fit relative cursor-pointer hidden md:flex md:justify-end p-5 md:pr-32 xl:pr-40 mb-6">
-                  <h2 className="md:text-xl font-semibold text-primary-foreground">View Stats</h2>
-                  <Button variant="icon" />
-               </div>
             </AccordionContent>
          </AccordionItem>
       </motion.section>

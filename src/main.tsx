@@ -5,6 +5,7 @@ import { App } from "@/modules/App";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import DataProvider from "./components/lib/data-context";
 import { TranslateProvider } from "./components/lib/translate-context";
 
 const getBrowserLang = (): 'en' | 'es' => {
@@ -17,9 +18,11 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <TranslateProvider initialLang={getBrowserLang()}>
-          <SectionProvider>
-            <App />
-          </SectionProvider>
+          <DataProvider>
+            <SectionProvider>
+              <App />
+            </SectionProvider>
+          </DataProvider>
         </TranslateProvider>
       </ThemeProvider>
     </BrowserRouter>

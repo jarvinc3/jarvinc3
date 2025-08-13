@@ -1,16 +1,18 @@
 import { Section } from "@/components/types/section.types";
 import { Card } from "@/components/ui/card";
+import { useAboutMe } from "@/hooks";
 import { useTranslate } from "@/hooks/use-translate";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import type { SectionProps } from "../App";
 
 export const ContactInfo = ({ ...props }: SectionProps) => {
    const { t } = useTranslate();
+   const aboutMe = useAboutMe();
 
-   const SocialIcon = ({ icon }: { icon: string }) => (
-      <div className="neu-button p-3 md:py-6 xl:py-4 rounded-full flex items-center justify-center">
+   const SocialIcon = ({ icon, index, url }: { icon: string, index: number, url: string }) => (
+      <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="neu-button cursor-pointer h-full p-3 !rounded-2xl flex items-center justify-center hover:scale-105 hover:text-primary">
          <Icon icon={icon} className="size-7" />
-      </div>
+      </a>
    );
 
    return (
@@ -25,14 +27,9 @@ export const ContactInfo = ({ ...props }: SectionProps) => {
                className="flex flex-col gap-4 md:gap-6 !rounded-2xl p-4 h-full"
             >
                <h2 className="text-lg md:text-xl font-semibold text-primary-foreground">{t("contact.social")}</h2>
-               <div className="grid grid-cols-4 md:grid-cols-1 xl:grid-cols-2 gap-4">
-                  {[
-                     "line-md:github-loop",
-                     "line-md:linkedin",
-                     "line-md:instagram",
-                     "basil:gmail-outline"
-                  ].map((icon) => (
-                     <SocialIcon key={icon} icon={icon} />
+               <div className="grid grid-cols-4 md:grid-cols-2 gap-4 h-full">
+                  {aboutMe.social_media.map((media, index) => (
+                     <SocialIcon icon={media.icon} index={index} url={media.url} />
                   ))}
                </div>
             </Card>
@@ -52,7 +49,7 @@ export const ContactInfo = ({ ...props }: SectionProps) => {
                         <div className="absolute w-1 left-2 top-2.5 bottom-2.5 rounded-sm bg-success transition-transform duration-300 ease-in-out z-[4] group-hover:translate-x-[0.15rem]" />
                         <div className="relative z-10 flex flex-col justify-center">
                            <h3 className="text-sm text-secondary-foreground font-semibold mb-1 px-5 transition-transform duration-300 group-hover:translate-x-1">{t("contact.number")}</h3>
-                           <p className="px-5 transition-transform duration-300 group-hover:translate-x-1">+1 (809) 637-6631</p>
+                           <p className="px-5 transition-transform duration-300 group-hover:translate-x-1">{aboutMe.phone_number}</p>
                         </div>
                      </div>
                   </div>
@@ -64,8 +61,10 @@ export const ContactInfo = ({ ...props }: SectionProps) => {
                         <div className="absolute w-1 left-2 top-2.5 bottom-2.5 rounded-sm bg-info transition-transform duration-300 ease-in-out z-[4] group-hover:translate-x-[0.15rem]" />
                         <div className="relative z-10 flex flex-col justify-center">
                            <h3 className="text-sm text-secondary-foreground font-semibold mb-1 px-5 transition-transform duration-300 group-hover:translate-x-1">{t("contact.mail")}</h3>
-                           <p className="px-5 transition-transform duration-300 group-hover:translate-x-1">jarvinct3@gmail.com</p>
-                           <p className="px-5 transition-transform duration-300 group-hover:translate-x-1">jarvincollado@gmail.com</p>
+                           <p className="px-5 transition-transform duration-300 group-hover:translate-x-1">{aboutMe.mail_address}</p>
+                           {aboutMe.secondary_mail_address && (
+                              <p className="px-5 transition-transform duration-300 group-hover:translate-x-1">{aboutMe.secondary_mail_address}</p>
+                           )}
                         </div>
                      </div>
                   </div>
@@ -78,10 +77,9 @@ export const ContactInfo = ({ ...props }: SectionProps) => {
                         <div className="relative z-10 flex flex-col justify-center">
                            <h3 className="text-sm text-secondary-foreground font-semibold mb-1 px-5 transition-transform duration-300 group-hover:translate-x-1">{t("contact.location")}</h3>
                            <p className="px-5 transition-transform duration-300 group-hover:translate-x-1">
-                              {t("contact.street")}, {" "}
-                              {t("contact.city")}, {" "}
-                              {t("contact.state")}, {" "}
-                              {t("contact.country")}
+                              {aboutMe.current_adress}, {" "}
+                              {aboutMe.city_address}, {" "}
+                              {aboutMe.country}
                            </p>
                         </div>
                      </div>

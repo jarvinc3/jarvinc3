@@ -1,15 +1,14 @@
 import { cn } from '@/components/lib/utils';
-import { projectsData } from '@/components/types/projects.data';
-import type { Project } from '@/components/types/projects.types';
 import { ProjectSection, Section } from '@/components/types/section.types';
 import { Card } from '@/components/ui/card';
+import { useProject } from '@/hooks/use-data';
 import { useResponsive } from '@/hooks/use-responsive';
 import { useScrollNavigation } from '@/hooks/use-scrollNavigation';
 import { useSectionClick } from '@/hooks/use-section';
 import { useTranslate } from '@/hooks/use-translate';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import ProjectGallery from './ProjectGallery';
 import { ProjectOverview } from './ProjectOverview';
 import { ProjectResults } from './ProjectResults';
@@ -22,10 +21,13 @@ const SLIDES = [
 ];
 
 const ProjectCarousel = () => {
+   const { id } = useParams<{ id: string }>();
    const { clickedProjectSection, setClickedProjectSection, goBack } = useSectionClick();
-   const [currentProject, setCurrentProject] = useState<Project | null>();
-   const { t, lang } = useTranslate();
+   const { lang } = useTranslate();
    const { isMobile, isTablet } = useResponsive();
+
+   const currentProject = useProject(id!);
+
    const index = SLIDES.findIndex(s => s.section === clickedProjectSection);
 
    const { isScrolling } = useScrollNavigation({
@@ -35,22 +37,7 @@ const ProjectCarousel = () => {
       onNavigate: (newIndex) => setClickedProjectSection(SLIDES[newIndex].section),
    });
 
-   useEffect(() => {
-      if (projectsData.length > 0) {
-         setCurrentProject(projectsData[0]);
-         setClickedProjectSection(ProjectSection.OVERVIEW);
-      }
-   }, [setClickedProjectSection]);
-
-   if (!currentProject) {
-      return (
-         <div className="min-h-screen bg-background flex items-center justify-center">
-            <p className="text-slate-600 text-lg">{t("projects.noProjects")}</p>
-         </div>
-      );
-   }
-
-   const getProjectData = (project: Project) => {
+   const getProjectData = (project: typeof currentProject) => {
       return project.translations?.[lang] || {
          title: project.title,
          subtitle: project.subtitle,
@@ -70,17 +57,15 @@ const ProjectCarousel = () => {
       [ProjectSection.RESULTS]:
          isMobile || isTablet
             ? <ProjectResultsMobile currentProject={currentProject} />
-            : < ProjectResults currentProject={currentProject} />,
+            : <ProjectResults currentProject={currentProject} />,
    };
 
    return (
       <motion.div
          tabIndex={-1}
-         exit={{ opacity: 0 }
-         }
+         exit={{ opacity: 0 }}
          className={cn("w-screen h-screen overflow-hidden bg-background text-foreground p-6 pl-10 md:p-10 xl:p-20 xl:pl-28")}
       >
-
          <div className="relative w-full h-full">
             <AnimatePresence mode="wait">
                <motion.div

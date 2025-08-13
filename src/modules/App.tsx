@@ -2,6 +2,7 @@ import NotFound404 from "@/components/ui/404";
 import { type CardProps } from "@/components/ui/card";
 import { NavbarActions } from "@/components/ui/navbar-actions";
 import { ScrollToTop } from "@/components/ui/scroll-top";
+import { TestSystem } from "@/test-system";
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -32,6 +33,7 @@ export const App = () => {
                <Route path="/project/:id" element={<ProjectCarousel />} />
                <Route path="/contact" element={<Contact />} />
                <Route path="/example" element={<Skills />} />
+               <Route path="/test" element={<TestSystem />} />
                <Route path="*" element={<NotFound404 />} />
             </Routes>
          </AnimatePresence>

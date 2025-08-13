@@ -9,14 +9,12 @@ export interface SkillCategory {
    category: string;
    icon: string;
    skills: Skill[];
-   color: string;
 }
 
 export const skillsData: SkillCategory[] = [
    {
       category: 'Languages',
       icon: "streamline-freehand:learning-programming-book",
-      color: 'bg-blue-500',
       skills: [
          { icon: "logos:javascript", name: 'JavaScript', level: 'Expert' },
          { icon: "logos:typescript-icon", name: 'TypeScript', level: 'Expert' },
@@ -27,7 +25,6 @@ export const skillsData: SkillCategory[] = [
    {
       category: 'Frontend',
       icon: "solar:programming-outline",
-      color: 'bg-green-500',
       skills: [
          { icon: "logos:react", name: 'React', level: 'Expert' },
          { icon: "logos:nextjs-icon", name: 'Next.js', level: 'Advanced' },
@@ -35,14 +32,13 @@ export const skillsData: SkillCategory[] = [
          { icon: "logos:astro-icon", name: 'AstroJs', level: 'Advanced' },
          { icon: "logos:html-5", name: 'HTML5', level: 'Expert' },
          { icon: "logos:css-3", name: 'CSS3', level: 'Expert' },
-         { icon: "logos:tailwindcss-icon", name: 'Tailwind CSS', level: 'Expert' },
+         { icon: "logos:tailwindcss-icon", name: 'TailwindCSS', level: 'Expert' },
          { icon: "logos:bootstrap", name: 'Bootstrap', level: 'Advanced' }
       ]
    },
    {
       category: 'Backend',
       icon: "hugeicons:laptop-programming",
-      color: 'bg-purple-500',
       skills: [
          { icon: "skill-icons:expressjs-dark", name: 'Express.js', level: 'Expert' },
          { icon: "logos:nestjs", name: 'Nest.js', level: 'Advanced' },
@@ -53,7 +49,6 @@ export const skillsData: SkillCategory[] = [
    {
       category: 'Databases',
       icon: "mdi:database-cog-outline",
-      color: 'bg-orange-500',
       skills: [
          { icon: "logos:postgresql", name: 'PostgreSQL', level: 'Advanced' },
          { icon: "logos:mysql-icon", name: 'MySQL', level: 'Advanced' },
@@ -64,7 +59,6 @@ export const skillsData: SkillCategory[] = [
    {
       category: 'Tools',
       icon: "fluent:window-dev-tools-24-regular",
-      color: 'bg-red-500',
       skills: [
          { icon: "logos:github-icon", name: 'Git/GitHub', level: 'Expert' },
          { icon: "logos:docker-icon", name: 'Docker', level: 'Advanced' },
@@ -74,7 +68,21 @@ export const skillsData: SkillCategory[] = [
    }
 ];
 
-export const statGrid = [
+export interface Stat {
+   iconColor: string;
+   count: number | string;
+   label: string;
+   description: string;
+}
+
+export interface Highlight {
+   countColor: string;
+   count: number | string;
+   label: string;
+   description: string;
+}
+
+export const statGrid: Stat[] = [
    {
       iconColor: "text-blue-500",
       count: skillsData.reduce((acc, cat) => acc + cat.skills.length, 0),
@@ -101,7 +109,7 @@ export const statGrid = [
    },
 ]
 
-export const keyHighlights = [
+export const keyHighlights: Highlight[] = [
    {
       countColor: "text-emerald-500",
       count: skillsData.find(cat => cat.category === 'Frontend')?.skills.length || 0,

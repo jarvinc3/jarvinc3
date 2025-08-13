@@ -1,8 +1,6 @@
 export const homeTranslations = {
    en: {
       hello: "HELLO, I'M",
-      name: 'Jarvin Collado.',
-      description: 'I am a Frontend Developer based in Santo Domingo.',
       more: 'MORE ABOUT ME',
       credentials: 'Credentials',
       showcase: 'SHOWCASE',
@@ -16,8 +14,6 @@ export const homeTranslations = {
    },
    es: {
       hello: 'HOLA, SOY',
-      name: 'Jarvin Collado.',
-      description: 'Soy un Desarrollador Frontend con sede en Santo Domingo.',
       more: 'MÁS SOBRE MÍ',
       credentials: 'Credenciales',
       showcase: 'PORTAFOLIO',
