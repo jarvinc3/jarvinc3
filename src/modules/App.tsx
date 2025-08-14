@@ -2,17 +2,17 @@ import NotFound404 from "@/components/ui/404";
 import { type CardProps } from "@/components/ui/card";
 import { NavbarActions } from "@/components/ui/navbar-actions";
 import { ScrollToTop } from "@/components/ui/scroll-top";
-import { TestSystem } from "@/test-system";
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
 
+import Example from "@/Example";
 import About from "@/modules/about/About";
 import Contact from "@/modules/contact/Contact";
 import Home from "@/modules/home/Home";
 import ProjectCarousel from "@/modules/projects/ProjectCarrousel";
 import Projects from "@/modules/projects/Projects";
 import Services from "@/modules/services/Services";
-import Skills from "./skills/Skills";
+import Skills from "@/modules/skills/Skills";
 
 export type SectionProps = Omit<CardProps, 'children'>;
 
@@ -32,8 +32,7 @@ export const App = () => {
                <Route path="/projects" element={<Projects />} />
                <Route path="/project/:id" element={<ProjectCarousel />} />
                <Route path="/contact" element={<Contact />} />
-               <Route path="/example" element={<Skills />} />
-               <Route path="/test" element={<TestSystem />} />
+               <Route path="/example" element={<Example />} />
                <Route path="*" element={<NotFound404 />} />
             </Routes>
          </AnimatePresence>

@@ -11,7 +11,7 @@ export default defineConfig({
     },
   },
   build: {
-    minify: 'terser',
+    minify: 'esbuild',
     sourcemap: false,
     rollupOptions: {
       output: {
