@@ -1,6 +1,7 @@
 export const projectsTranslations = {
    en: {
-      title: 'ALL PROJECTS',
+      title: 'MY PROJECTS',
+      viewButton: 'View Project',
       loading: 'Loading portfolio...',
       noProjects: 'No projects found.',
       back: 'Back',
@@ -40,6 +41,7 @@ export const projectsTranslations = {
    },
    es: {
       title: 'MIS PROYECTOS',
+      viewButton: 'Ver Proyecto',
       loading: 'Cargando portfolio...',
       noProjects: 'No se encontraron proyectos.',
       back: 'Volver',

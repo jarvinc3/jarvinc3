@@ -30,7 +30,7 @@ export const SkillsCard = () => {
          animate={clickedSection === Section.ABOUT
             ? { x: 0, transition: { duration: 0.8 } }
             : { x: '100vw', transition: { duration: 0.5 } }}
-         className="space-y-4 relative"
+         className="space-y-4 relative xl:mb-10"
       >
          <AccordionItem value="item-4" className="card-base !rounded-2xl px-4 pt-6">
             <AccordionTrigger>

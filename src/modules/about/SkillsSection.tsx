@@ -13,7 +13,7 @@ export const SkillsSection = ({ ...props }: SectionProps) => {
       >
          <div className="group relative cursor-pointer h-full w-full flex flex-col justify-between p-6 gap-6">
             <div className="h-full p-4 flex items-center justify-center overflow-hidden">
-               <Icon icon="streamline-freehand-color:analytics-board-graph-line" className="scale-75 w-full h-full object-contain" />
+               <Icon icon="streamline-freehand-color:analytics-board-graph-line" className="scale-75 size-full md:w-1/3 h-full object-contain" />
             </div>
             <div>
                <p className="text-sm text-secondary-foreground">{t("about.skillsSectionDescription")}</p>

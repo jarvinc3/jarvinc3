@@ -20,27 +20,27 @@ const Services = () => {
          <ServicesSection
             className="col-span-2 row-span-3 md:col-span-3 md:row-span-3 md:col-start-2 md:row-start-1 flex gap-6 flex-col justify-between"
             type="custom"
-            animate="up"
+            animate="right"
             section={Section.SERVICES}
          />
          <ProjectsSection
             className="row-start-5 md:col-span-1 md:row-span-1 md:row-start-1"
             type="base"
-            animate="bottom2"
+            animate="left"
             section={Section.SERVICES}
             onClick={() => setClickedSection(Section.PROJECTS)}
          />
          <TogetherSection
             className="md:row-start-2 hidden md:block"
             type="base"
-            animate="bottom"
+            animate="static"
             section={Section.SERVICES}
             onClick={() => setClickedSection(Section.CONTACT)}
          />
          <CredentialSection
             className="row-start-5 md:row-start-3"
             type="base"
-            animate="static"
+            animate="bottom"
             section={Section.SERVICES}
             onClick={() => setClickedSection(Section.ABOUT)}
          />

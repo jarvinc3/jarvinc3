@@ -1,169 +1,146 @@
+import { Icon } from '@iconify/react/dist/iconify.js';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { cn } from './components/lib/utils';
-import { useAboutMe, useEducation, useExperience, useProjects, useServices, useSkills, useTranslate } from './hooks';
+import { useProjects } from './hooks';
 
 const Example = () => {
-   const { t, lang, toggleLang } = useTranslate();
-   const aboutMe = useAboutMe();
-   const { skills, stats, highlights } = useSkills();
-   const { projects, featuredProjects } = useProjects();
-   const experience = useExperience();
-   const education = useEducation();
-   const services = useServices();
+   const { projects } = useProjects();
+   const [isFlipped, setIsFlipped] = useState(true);
 
    return (
       <motion.div
          exit={{ opacity: 0 }}
          className={cn(
-            "container mx-auto w-screen min-h-screen relative p-6 pl-12 xl:pl-0 xl:p-20 overflow-y-auto overflow-x-hidden scrollbar-hidden text-foreground")}
+            "container mx-auto w-screen min-h-screen relative p-6 pl-12 xl:pl-0 xl:p-20 overflow-y-auto overflow-x-hidden scrollbar-hidden text-foreground",
+            "grid grid-cols-1 md:grid-cols-2 md:grid-rows-5 xl:grid-cols-6 xl:grid-rows-7 gap-6 md:gap-10"
+         )}
       >
-         <div className="bg-blue-50 p-4 rounded-lg">
-            <h1 className="text-2xl font-bold mb-4">🔧 Sistema de Datos y Traducciones - Test</h1>
-            <p><strong>Idioma actual:</strong> {lang}</p>
-            <button
-               onClick={toggleLang}
-               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mt-2"
+         <div
+            className="relative size-full group [perspective:2000px] md:row-span-2 md:row-start-2 xl:col-span-2 xl:row-span-3"
+            onMouseEnter={() => setIsFlipped(true)}
+         onMouseLeave={() => setIsFlipped(false)}
+         >
+            <div
+               className={cn("relative w-full h-full [transform-style:preserve-3d] transition-all duration-700",
+                  isFlipped
+                     ? "[transform:rotateY(180deg)]"
+                     : "[transform:rotateY(0deg)]"
+               )}
             >
-               Cambiar a {lang === 'en' ? 'Español' : 'English'}
-            </button>
+               {/* Front Side */}
+               <div
+                  className={cn(
+                     "card-base absolute inset-0 w-full h-full p-3",
+                     "[backface-visibility:hidden] [transform:rotateY(0deg)]",
+                     "overflow-hidden !rounded-3xl",
+                     "transition-all duration-500",
+                     isFlipped ? "opacity-0" : "opacity-100"
+                  )}
+               >
+                  <div className="relative w-full h-full overflow-hidden">
+                     <img
+                        alt={projects[0].title}
+                        src={projects[0].images[0]}
+                        className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                     />
+                     <div className="absolute inset-0 bg-black/40 rounded-2xl" />
+
+                     <div className="absolute bottom-0 left-0 right-0 p-5 flex items-center justify-between gap-3">
+                        <div className="space-y-1.5">
+                           <h3 className="text-lg font-semibold leading-snug tracking-tighter text-white transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px]">
+                              {projects[0].title}
+                           </h3>
+                           <p className="text-sm text-white/80 line-clamp-2 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px] delay-[50ms]">
+                              {projects[0].description}
+                           </p>
+                        </div>
+                        <div className="relative group/icon">
+                           <div
+                              className={cn(
+                                 "absolute inset-[-8px] !rounded-lg transition-opacity duration-300",
+                                 "neu-button"
+                              )}
+                           />
+                           <Icon
+                              icon="ant-design:arrow-right-outlined"
+                              className="relative z-10 w-4 h-4 text-orange-400 transition-transform duration-300 group-hover/icon:scale-110 group-hover/icon:-rotate-12"
+                           />
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               {/* Back Side */}
+               <div
+                  className={cn(
+                     "card-secondary absolute inset-0 w-full h-full",
+                     "[backface-visibility:hidden] [transform:rotateY(180deg)]",
+                     "flex flex-col p-6 rounded-2xl overflow-hidden",
+                     "relative transition-all duration-500",
+                     !isFlipped ? "opacity-0" : "opacity-100"
+                  )}
+               >
+                  <div className="flex-1 space-y-6">
+                     <div className="space-y-2">
+                        <h3 className="text-lg font-semibold leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
+                           {projects[0].title}
+                        </h3>
+                        <p className="text-sm text-secondary-foreground tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] line-clamp-2">
+                           {projects[0].description}
+                        </p>
+                     </div>
+
+                     <div className="space-y-2 overflow-hidden">
+                        {projects[3].results.map((feature, index) => (
+                           <div
+                              key={feature}
+                              className="flex items-center gap-2 text-sm text-secondary-foreground transition-all duration-500"
+                              style={{
+                                 transform: isFlipped
+                                    ? "translateX(0)"
+                                    : "translateX(-10px)",
+                                 opacity: isFlipped ? 1 : 0,
+                                 transitionDelay: `${index * 100 + 200
+                                    }ms`,
+                              }}
+                           >
+                              <Icon icon="ant-design:check" className="w-3 h-3 text-success" />
+                              <span>{feature}</span>
+                           </div>
+                        ))}
+                     </div>
+                  </div>
+
+                  <div
+                     className={cn(
+                           "absolute bottom-0 left-0 right-0",
+                           "bg-gradient-to-b from-transparent via-background/70 to-background/0",
+                           "w-full h-32 p-2 pr-3 m-1 flex items-end",
+                           "transition-all duration-300",
+                           "hover:scale-[1.02] hover:cursor-pointer"
+                     )}
+                  >
+                     <button
+                        className={cn(
+                           "neu-button flex items-center justify-between",
+                           "w-full p-3 !rounded-xl",
+                           "transition-all duration-300",
+                           "hover:scale-[1.02] hover:cursor-pointer"
+                        )}
+                     >
+                        <span className="text-sm font-medium transition-colors duration-300">
+                           View Project Details
+                        </span>
+                        <Icon
+                           icon="ant-design:arrow-right-outlined"
+                           className="size-5"
+                        />
+                     </button>
+                  </div>
+               </div>
+            </div>
          </div>
-
-         {/* Traducciones */}
-         <section className="border rounded-lg p-4">
-            <h2 className="text-xl font-bold mb-3">🌐 Traducciones</h2>
-            <div className="grid grid-cols-2 gap-4">
-               <div>
-                  <strong>Home:</strong> {t('general.Home')}<br />
-                  <strong>About:</strong> {t('general.About')}<br />
-                  <strong>Services:</strong> {t('general.Services')}<br />
-                  <strong>Projects:</strong> {t('general.Projects')}<br />
-                  <strong>Contact:</strong> {t('general.Contact')}
-               </div>
-               <div>
-                  <strong>Hello:</strong> {t('home.hello')}<br />
-                  <strong>Credentials:</strong> {t('home.credentials')}<br />
-                  <strong>Showcase:</strong> {t('home.showcase')}<br />
-                  <strong>Specialization:</strong> {t('home.specialization')}
-               </div>
-            </div>
-         </section>
-
-         {/* Datos Personales */}
-         <section className="border rounded-lg p-4">
-            <h2 className="text-xl font-bold mb-3">👤 Datos Personales</h2>
-            <div className="grid grid-cols-2 gap-4">
-               <div>
-                  <strong>Nombre:</strong> {aboutMe.name} {aboutMe.last_name}<br />
-                  <strong>Posición:</strong> {aboutMe.job_position}<br />
-                  <strong>Email:</strong> {aboutMe.mail_address}<br />
-                  <strong>Teléfono:</strong> {aboutMe.phone_number}
-               </div>
-               <div>
-                  <strong>Descripción Corta:</strong> {aboutMe.short_description}<br />
-                  <strong>País:</strong> {aboutMe.country}<br />
-                  <strong>Ciudad:</strong> {aboutMe.city_address}<br />
-                  <strong>Redes Sociales:</strong> {aboutMe.social_media.length}
-               </div>
-            </div>
-         </section>
-
-         {/* Habilidades */}
-         <section className="border rounded-lg p-4">
-            <h2 className="text-xl font-bold mb-3">💻 Habilidades</h2>
-            <div className="grid grid-cols-2 gap-4">
-               <div>
-                  <strong>Total Categorías:</strong> {skills.length}<br />
-                  <strong>Total Habilidades:</strong> {stats[0]?.count}<br />
-                  <strong>Nivel Experto:</strong> {stats[1]?.count}<br />
-                  <strong>Proyectos:</strong> {stats[2]?.count}
-               </div>
-               <div>
-                  <strong>Frontend:</strong> {highlights[0]?.count}<br />
-                  <strong>Avanzadas+:</strong> {highlights[1]?.count}<br />
-                  <strong>Backend:</strong> {highlights[2]?.count}
-               </div>
-            </div>
-         </section>
-
-         {/* Proyectos */}
-         <section className="border rounded-lg p-4">
-            <h2 className="text-xl font-bold mb-3">🚀 Proyectos</h2>
-            <div className="grid grid-cols-2 gap-4">
-               <div>
-                  <strong>Total Proyectos:</strong> {projects.length}<br />
-                  <strong>Destacados:</strong> {featuredProjects.length}<br />
-                  <strong>Primer Proyecto:</strong> {projects[0]?.title || 'N/A'}
-               </div>
-               <div>
-                  <strong>Estado Completado:</strong> {projects.filter(p => p.status === 'completed').length}<br />
-                  <strong>En Desarrollo:</strong> {projects.filter(p => p.status === 'inProgress').length}<br />
-                  <strong>Planificados:</strong> {projects.filter(p => p.status === 'planned').length}
-               </div>
-            </div>
-         </section>
-
-         {/* Experiencia */}
-         <section className="border rounded-lg p-4">
-            <h2 className="text-xl font-bold mb-3">💼 Experiencia</h2>
-            <div className="space-y-2">
-               {experience.map((exp) => (
-                  <div key={exp.id} className="border-l-4 border-blue-500 pl-4">
-                     <strong>{exp.position_in}</strong> en {exp.company_name}<br />
-                     <span className="text-sm text-gray-600">
-                        {new Date(exp.init_date).getFullYear()} - {exp.currently ? 'Present' : new Date(exp.finish_date).getFullYear()}
-                     </span>
-                  </div>
-               ))}
-            </div>
-         </section>
-
-         {/* Educación */}
-         <section className="border rounded-lg p-4">
-            <h2 className="text-xl font-bold mb-3">🎓 Educación</h2>
-            <div className="space-y-2">
-               {education.map((edu) => (
-                  <div key={edu.id} className="border-l-4 border-green-500 pl-4">
-                     <strong>{edu.graduate}</strong> en {edu.place_of_study}<br />
-                     <span className="text-sm text-gray-600">
-                        {new Date(edu.init_date).getFullYear()} - {edu.currently ? 'Present' : new Date(edu.finish_date!).getFullYear()}
-                     </span>
-                     {edu.honors && <div className="text-sm text-blue-600">Honores: {edu.honors}</div>}
-                  </div>
-               ))}
-            </div>
-         </section>
-
-         {/* Servicios */}
-         <section className="border rounded-lg p-4">
-            <h2 className="text-xl font-bold mb-3">🛠️ Servicios</h2>
-            <div className="space-y-2">
-               {services.map((service) => (
-                  <div key={service.id} className="border-l-4 border-purple-500 pl-4">
-                     <strong>{service.service}</strong><br />
-                     <span className="text-sm text-gray-600">{service.description.length} descripciones</span>
-                  </div>
-               ))}
-            </div>
-         </section>
-
-         {/* Estado del Sistema */}
-         <section className="bg-green-50 p-4 rounded-lg">
-            <h2 className="text-xl font-bold mb-3">✅ Estado del Sistema</h2>
-            <div className="grid grid-cols-2 gap-4">
-               <div>
-                  <strong>✅ DataContext:</strong> Funcionando<br />
-                  <strong>✅ Hooks:</strong> Funcionando<br />
-                  <strong>✅ Traducciones:</strong> Funcionando<br />
-                  <strong>✅ Idioma:</strong> {lang}
-               </div>
-               <div>
-                  <strong>✅ AboutMe:</strong> {aboutMe ? 'Cargado' : 'Error'}<br />
-                  <strong>✅ Skills:</strong> {skills.length > 0 ? 'Cargado' : 'Error'}<br />
-                  <strong>✅ Projects:</strong> {projects.length > 0 ? 'Cargado' : 'Error'}<br />
-                  <strong>✅ Services:</strong> {services.length > 0 ? 'Cargado' : 'Error'}
-               </div>
-            </div>
-         </section>
       </motion.div>
    );
 };

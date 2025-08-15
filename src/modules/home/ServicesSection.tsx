@@ -22,7 +22,7 @@ export const ServicesSection = ({ ...props }: SectionProps) => {
          {...props}
       >
          <div className="group relative cursor-pointer h-full w-full flex flex-col justify-between gap-6 p-6">
-            <div className="h-full grid grid-cols-3 gap-4 p-4">
+            <div className="h-full grid grid-cols-3 gap-4 md:p-4">
                {services.map((service) => (
                   <ServiceButton 
                      key={service.id} 
@@ -33,7 +33,7 @@ export const ServicesSection = ({ ...props }: SectionProps) => {
             </div>
             <div>
                <p className="text-sm text-primary-foreground">{t("home.specialization")}</p>
-               <h2 className="text-2xl font-semibold text-primary-foreground">{t("home.services")}</h2>
+               <h2 className="md:text-2xl font-semibold text-primary-foreground">{t("home.services")}</h2>
                <Button variant="icon" />
             </div>
          </div>

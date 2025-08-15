@@ -9,7 +9,6 @@ import {
    useState,
 } from "react";
 
-// 1. Tipos para el contexto global (estado compartido entre todos los items)
 type AccordionType = "single" | "multiple";
 
 type AccordionContextType = {
@@ -26,7 +25,6 @@ const useAccordionContext = () => {
    return context;
 };
 
-// 2. Tipos para el contexto local de cada item
 type AccordionItemContextType = {
    isOpen: boolean;
    toggle: () => void;
@@ -40,7 +38,6 @@ const useAccordionItemContext = () => {
    return context;
 };
 
-// 3. Componente Accordion (padre general)
 type AccordionProps = {
    children: ReactNode;
    className?: string;
@@ -84,7 +81,6 @@ export const Accordion = ({
    );
 };
 
-// 4. Componente AccordionItem
 type AccordionItemProps = {
    value: string;
    children: ReactNode;
@@ -104,7 +100,6 @@ export const AccordionItem = ({ value, children, className }: AccordionItemProps
    );
 };
 
-// 5. Componente AccordionTrigger
 type AccordionTriggerProps = {
    children: ReactNode;
 };
@@ -128,7 +123,6 @@ export const AccordionTrigger = ({ children }: AccordionTriggerProps) => {
    );
 };
 
-// 6. Componente AccordionContent
 type AccordionContentProps = {
    children: ReactNode;
    className?: string;
