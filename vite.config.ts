@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/jarvinc3/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -18,7 +19,7 @@ export default defineConfig({
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
           'router-vendor': ['react-router', 'react-router-dom'],
-          'ui-vendor': ['@radix-ui/react-dropdown-menu', 'framer-motion'],
+          'ui-vendor': ['framer-motion'],
           'utils-vendor': ['clsx', 'tailwind-merge', 'class-variance-authority']
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
@@ -34,7 +35,6 @@ export default defineConfig({
       'react',
       'react-dom',
       'react-router-dom',
-      '@radix-ui/react-dropdown-menu',
       'framer-motion'
     ]
   },
