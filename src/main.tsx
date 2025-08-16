@@ -15,7 +15,7 @@ const getBrowserLang = (): 'en' | 'es' => {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/jarvinc3">
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <TranslateProvider initialLang={getBrowserLang()}>
           <DataProvider>

@@ -14,7 +14,7 @@ const Skills = () => {
       <motion.div
          exit={{ opacity: 0 }}
          className={cn(
-            "container mx-auto w-screen min-h-screen relative p-6 pl-12 xl:pl-0 xl:p-20 overflow-y-auto overflow-x-hidden scrollbar-hidden text-foreground",
+            "container mx-auto w-screen min-h-screen md:h-screen relative p-6 pl-12 xl:pl-0 xl:p-20 overflow-y-auto overflow-x-hidden scrollbar-hidden md:overflow-hidden text-foreground",
             "grid grid-cols-1 md:grid-cols-5 xl:grid-cols-3 gap-6 items-center xl:items-start"
          )}
       >
