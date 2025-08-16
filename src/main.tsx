@@ -4,7 +4,7 @@ import "@/index.css";
 import { App } from "@/modules/App";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import DataProvider from "./components/lib/data-context";
 import { TranslateProvider } from "./components/lib/translate-context";
 
@@ -15,7 +15,7 @@ const getBrowserLang = (): 'en' | 'es' => {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename="/jarvinc3">
+    <HashRouter>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <TranslateProvider initialLang={getBrowserLang()}>
           <DataProvider>
@@ -25,6 +25,6 @@ createRoot(document.getElementById('root')!).render(
           </DataProvider>
         </TranslateProvider>
       </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>,
 )

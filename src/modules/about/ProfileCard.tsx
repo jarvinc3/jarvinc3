@@ -23,7 +23,7 @@ export const ProfileCard = ({ ...props }: SectionProps) => {
       >
          <section className="relative flex flex-col items-end gap-4 p-4">
             <div className="absolute top-4  left-4 card-secondary size-24 p-2 !rounded-full flex items-center justify-center overflow-hidden">
-               <img src="/images/pixel_art.png" alt="profile" className="w-full h-full object-contain" />
+               <img src="/jarvinc3/images/pixel_art.png" alt="profile" className="w-full h-full object-contain" />
             </div>
             <div className="w-2/3 h-24 flex flex-col justify-center text-end">
                <h2 className="text-3xl font-semibold text-primary-foreground">
