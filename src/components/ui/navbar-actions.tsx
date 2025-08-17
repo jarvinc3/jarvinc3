@@ -1,35 +1,12 @@
-import { Section } from "@/components/types/section.types";
+import { cn } from "@/components/lib/utils";
+import { Section, SLIDES } from "@/components/types/section.types";
+import type { TranslationKey } from "@/components/types/translations.index";
 import { useSectionClick } from "@/hooks/use-section";
 import { useTranslate } from "@/hooks/use-translate";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { motion } from "framer-motion";
-import { cn } from "../lib/utils";
-import type { TranslationKey } from "../types/translations.index";
 
-const navItems = [
-   {
-      name: "Home",
-      icon: "mynaui:home-solid",
-      section: Section.HOME
-   },
-   {
-      name: "About",
-      icon: "fluent:contact-card-32-regular",
-      section: Section.ABOUT
-   },
-   {
-      name: "Projects",
-      icon: "gg:work-alt",
-      section: Section.PROJECTS
-   },
-   {
-      name: "Contact",
-      icon: "fluent:contact-card-link-16-regular",
-      section: Section.CONTACT
-   }
-]
-
-export const NavbarActions = () => {
+export const NavbarActions = ({ isScrolling }: { isScrolling: boolean }) => {
    const { clickedSection, setClickedSection, goBack } = useSectionClick();
    const { t } = useTranslate();
 
@@ -49,20 +26,20 @@ export const NavbarActions = () => {
                </button>
                <div className="h-6 w-0.5 bg-stone-400" />
             </div>
-            {navItems.map((item, i) => (
+            {SLIDES.map((slide, i) => (
                <div key={i} className='flex flex-col items-center gap-4'>
                   <div className="h-6 w-0.5 bg-stone-400" />
                   <button
-                     onClick={() => setClickedSection(item.section)}
+                     onClick={() => !isScrolling && setClickedSection(slide.section)}
                      className={cn(
                         'group relative size-10 flex items-center justify-center !rounded-r-xl !rounded-l-none xl:!rounded-xl',
-                        clickedSection === item.section ? 'card-base' : 'neu-button'
+                        clickedSection === slide.section ? 'card-base' : 'neu-button'
                      )}
                   >
-                     <Icon icon={item.icon} className={`size-6 ${clickedSection === item.section ? 'text-info' : ''}`} />
+                     <Icon icon={slide.icon} className={`size-6 ${clickedSection === slide.section ? 'text-info' : ''}`} />
                      <div
                         className="bg-secondary-foreground p-2 rounded-md hidden group-hover:flex absolute top-1/2 -translate-y-1/2 -right-2 translate-x-full"                     >
-                        <span className="text-secondary whitespace-nowrap">{t(("general." + item.name) as TranslationKey)}</span>
+                        <span className="text-secondary whitespace-nowrap">{t(("general." + slide.name) as TranslationKey)}</span>
                         <div className="bg-inherit rotate-45 p-1 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2"></div>
                      </div>
                   </button>

@@ -9,8 +9,8 @@ export const ContactInfo = ({ ...props }: SectionProps) => {
    const { t } = useTranslate();
    const aboutMe = useAboutMe();
 
-   const SocialIcon = ({ icon, index, url }: { icon: string, index: number, url: string }) => (
-      <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="neu-button cursor-pointer h-full p-3 !rounded-2xl flex items-center justify-center hover:scale-105 hover:text-primary">
+   const SocialIcon = ({ icon, url }: { icon: string, url: string }) => (
+      <a href={url} target="_blank" rel="noopener noreferrer" className="neu-button cursor-pointer h-full p-3 !rounded-2xl flex items-center justify-center hover:scale-105 hover:text-primary">
          <Icon icon={icon} className="size-7" />
       </a>
    );
@@ -29,7 +29,7 @@ export const ContactInfo = ({ ...props }: SectionProps) => {
                <h2 className="text-lg md:text-xl font-semibold text-primary-foreground">{t("contact.social")}</h2>
                <div className="grid grid-cols-4 md:grid-cols-2 gap-4 h-full">
                   {aboutMe.social_media.map((media, index) => (
-                     <SocialIcon icon={media.icon} index={index} url={media.url} />
+                     <SocialIcon key={index} icon={media.icon} url={media.url} />
                   ))}
                </div>
             </Card>

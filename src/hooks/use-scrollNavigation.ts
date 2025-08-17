@@ -1,28 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type RefObject } from 'react';
 
 type Direction = 'up' | 'down';
 
 interface UseScrollNavigationOptions<T> {
    items: T[];
+   enabled?: boolean;
    activeIndex: number;
-   onNavigate: (newIndex: number) => void;
    scrollDelay?: number;
-   disableOnMobile?: boolean;
+   disableOnResponsive?: boolean;
+   onNavigate: (newIndex: number) => void;
+   containerRef?: RefObject<HTMLElement | null>;
 }
 
-const isMobileView = () => window.innerWidth < 768;
+const isMobileView = () => window.innerWidth < 1280;
 
 export const useScrollNavigation = <T>({
    items,
+   enabled = true,
    activeIndex,
    onNavigate,
    scrollDelay = 800,
-   disableOnMobile = false,
+   disableOnResponsive = false,
+   containerRef,
 }: UseScrollNavigationOptions<T>) => {
    const [isScrolling, setIsScrolling] = useState(false);
 
    useEffect(() => {
-      if (disableOnMobile && isMobileView()) return;
+      if (!enabled) return;
+      if (disableOnResponsive && isMobileView()) return;
+
+      const el = containerRef?.current || window;
 
       const handleScroll = (direction: Direction) => {
          if (isScrolling) return;
@@ -36,18 +43,31 @@ export const useScrollNavigation = <T>({
          }
       };
 
-      const handleWheel = (e: WheelEvent) => {
-         e.preventDefault();
-         if (e.deltaY > 0) handleScroll('down');
-         else if (e.deltaY < 0) handleScroll('up');
+      const handleWheel: EventListener = (event) => {
+         const e = event as WheelEvent;
+         const target = (event.target as HTMLElement).closest('[data-scrollable="true"]') as HTMLElement | null;
+
+         // Si el evento ocurre dentro de un scrollable real
+         if (target) {
+            const canScrollDown = target.scrollTop + target.clientHeight < target.scrollHeight;
+            const canScrollUp = target.scrollTop > 0;
+
+            // Si aún puede scrollear normalmente, dejamos que lo haga
+            if ((e.deltaY > 0 && canScrollDown) || (e.deltaY < 0 && canScrollUp)) {
+               return;
+            }
+         }
+
+         event.preventDefault();
+         if (e.deltaY > 0) handleScroll("down");
+         else if (e.deltaY < 0) handleScroll("up");
       };
 
-      window.addEventListener('wheel', handleWheel, { passive: false });
-
+      el.addEventListener('wheel', handleWheel, { passive: false });
       return () => {
-         window.removeEventListener('wheel', handleWheel);
+         el.removeEventListener('wheel', handleWheel);
       };
-   }, [activeIndex, items.length, isScrolling, onNavigate, scrollDelay, disableOnMobile]);
+   }, [enabled, activeIndex, items.length, isScrolling, onNavigate, scrollDelay, disableOnResponsive, containerRef]);
 
    return { isScrolling };
 };

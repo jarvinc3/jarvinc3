@@ -1,12 +1,15 @@
+import { Section } from "@/components/types/section.types";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { useServices } from "@/hooks";
+import { useResponsive, useSectionClick, useServices } from "@/hooks";
 import { useTranslate } from "@/hooks/use-translate";
 import type { SectionProps } from "../App";
 
 export const ServicesSection = ({ ...props }: SectionProps) => {
-   const { t } = useTranslate();
+   const { clickedSection } = useSectionClick();
+   const { isMobile } = useResponsive();
    const services = useServices();
+   const { t } = useTranslate();
 
    const ServiceButton = ({ imgSrc, label }: { imgSrc: string; label: string }) => (
       <button className="group/button relative cursor-pointer flex items-center justify-center p-2 rounded-md drop-shadow-xl from-gray-800 text-white font-semibold hover:translate-y-2 transition-all duration-250 hover:from-[#331029] hover:to-[#310413]">
@@ -22,15 +25,20 @@ export const ServicesSection = ({ ...props }: SectionProps) => {
          {...props}
       >
          <div className="group relative cursor-pointer h-full w-full flex flex-col justify-between gap-6 p-6">
-            <div className="h-full grid grid-cols-3 gap-4 md:p-4">
-               {services.map((service) => (
-                  <ServiceButton 
-                     key={service.id} 
-                     imgSrc={service.icon} 
-                     label={service.service} 
-                  />
-               ))}
-            </div>
+            {isMobile && clickedSection === Section.ABOUT
+               ? <div className="w-full h-full p-4 flex items-center justify-center overflow-hidden">
+                  <img src="https://img.icons8.com/?size=100&id=116827&format=png&color=000000" alt="resume" className="scale-75 w-full h-full object-contain" />
+               </div>
+               : <div className="h-full grid grid-cols-3 gap-4 md:p-4">
+                  {services.map((service) => (
+                     <ServiceButton
+                        key={service.id}
+                        imgSrc={service.icon}
+                        label={service.service}
+                     />
+                  ))}
+               </div>
+            }
             <div>
                <p className="text-sm text-primary-foreground">{t("home.specialization")}</p>
                <h2 className="md:text-2xl font-semibold text-primary-foreground">{t("home.services")}</h2>

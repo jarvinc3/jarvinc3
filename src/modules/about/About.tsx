@@ -42,14 +42,14 @@ const About = () => {
          <SkillsSection
             className="xl:row-span-2 xl:col-start-1 xl:row-start-4"
             type="base"
-            animate='right'
+            animate='bottom'
             section={Section.ABOUT}
             onClick={() => setClickedSection(Section.SKILLS)}
          />
          <ServicesSection
             className="xl:row-span-2 xl:col-start-1 xl:row-start-2"
             type="base"
-            animate="bottom"
+            animate="left"
             section={Section.ABOUT}
             onClick={() => setClickedSection(Section.SERVICES)}
          />

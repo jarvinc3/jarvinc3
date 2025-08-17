@@ -1,5 +1,5 @@
 import { DataContext, type DataContextType } from '@/components/lib/data-context-definition';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 export const useData = (): DataContextType => {
    const context = useContext(DataContext);
@@ -33,11 +33,22 @@ export const useProjects = () => {
    return { projects, featuredProjects, projectFilters };
 };
 
-export const useProject = (id: string) => {
+let globalProjectId: string | null = null;
+let setGlobalProjectId: ((id: string | null) => void) | null = null;
+
+export const useProject = () => {
    const { projectFilters } = useData();
-   const project = projectFilters.byId(id);
-   if (!project) {
-      throw new Error(`Project with id ${id} not found`);
-   }
-   return project;
+   const [projectId, setProjectId] = useState(globalProjectId);
+
+   setGlobalProjectId = setProjectId;
+
+   const setProject = (id: string) => {
+      globalProjectId = id;
+      setGlobalProjectId?.(id);
+   };
+
+   const project = projectId ? projectFilters.byId(projectId) : null;
+
+   return { project, setProject };
 };
+

@@ -17,7 +17,7 @@ export const ServicesSection = ({ ...props }: SectionProps) => {
             <h2 className="w-full text-center text-3xl md:text-4xl xl:text-5xl font-semibold text-primary-foreground">{t("services.myOfferings")}</h2>
             <Icon icon="solar:star-fall-linear" className="size-12 md:size-16 rotate-180" />
          </div>
-         <div className="card-base relative w-full h-full md:overflow-y-auto scroll-hide grid grid-cols-1 xl:grid-cols-2 gap-6 p-4">
+         <div data-scrollable="true" className="card-base relative w-full h-full md:overflow-y-auto scroll-hide grid grid-cols-1 xl:grid-cols-2 gap-6 p-4">
             {services.map((service) => (
                <div key={service.id} className="card-secondary relative w-full h-full flex flex-col gap-1 p-4">
                   <div className="w-full flex gap-2 items-center">

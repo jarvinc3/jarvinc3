@@ -8,7 +8,7 @@ import { useSectionClick } from '@/hooks/use-section';
 import { useTranslate } from '@/hooks/use-translate';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useParams } from 'react-router-dom';
+import { useRef } from 'react';
 import ProjectGallery from './ProjectGallery';
 import { ProjectOverview } from './ProjectOverview';
 import { ProjectResults } from './ProjectResults';
@@ -21,21 +21,30 @@ const SLIDES = [
 ];
 
 const ProjectCarousel = () => {
-   const { id } = useParams<{ id: string }>();
    const { clickedProjectSection, setClickedProjectSection, goBack } = useSectionClick();
-   const { lang } = useTranslate();
+   const containerRef = useRef<HTMLDivElement>(null);
    const { isMobile, isTablet } = useResponsive();
-
-   const currentProject = useProject(id!);
+   const { lang } = useTranslate();
 
    const index = SLIDES.findIndex(s => s.section === clickedProjectSection);
 
    const { isScrolling } = useScrollNavigation({
       items: SLIDES,
       activeIndex: index,
-      disableOnMobile: true,
+      disableOnResponsive: true,
+      containerRef,
       onNavigate: (newIndex) => setClickedProjectSection(SLIDES[newIndex].section),
    });
+
+   const { project: currentProject } = useProject();
+
+   if (!currentProject) {
+      return (
+         <div className="w-screen h-screen flex items-center justify-center">
+            <p>No project selected</p>
+         </div>
+      );
+   }
 
    const getProjectData = (project: typeof currentProject) => {
       return project.translations?.[lang] || {
@@ -70,6 +79,7 @@ const ProjectCarousel = () => {
             <AnimatePresence mode="wait">
                <motion.div
                   key={clickedProjectSection}
+                  ref={containerRef}
                   exit={{ opacity: 0 }}
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-full h-full"
                >

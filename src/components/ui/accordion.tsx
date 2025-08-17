@@ -76,7 +76,7 @@ export const Accordion = ({
 
    return (
       <AccordionContext.Provider value={{ openItems, toggleItem, type }}>
-         <div className={className}>{children}</div>
+         <div data-scrollable="true" className={className}>{children}</div>
       </AccordionContext.Provider>
    );
 };
