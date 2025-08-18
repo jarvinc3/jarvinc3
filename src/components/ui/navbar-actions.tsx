@@ -21,7 +21,7 @@ export const NavbarActions = ({ isScrolling }: { isScrolling: boolean }) => {
          >
             <div className="flex flex-col items-center gap-4">
                <div className="h-6 w-0.5 bg-stone-400" />
-               <button onClick={goBack} className='neu-button size-10 flex items-center !rounded-r-xl !rounded-l-none justify-center !rounded-xl'>
+               <button onClick={goBack} className='neu-button size-10 flex items-center !rounded-r-xl !rounded-l-none justify-center !rounded-xl xl:!rounded-l-xl'>
                   <Icon icon="mdi:arrow-left" className="size-6" />
                </button>
                <div className="h-6 w-0.5 bg-stone-400" />

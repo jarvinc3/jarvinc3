@@ -116,6 +116,16 @@ const ProjectCarousel = () => {
                </div>
             ))}
          </Card>
+
+
+         <Card
+            className="fixed z-50 bottom-6 right-1/2 translate-x-1/2 flex flex-col"
+            animate="bottom"
+            type='custom'
+            projectSection={ProjectSection.OVERVIEW}
+         >
+            <Icon icon="lineicons:scroll-down-2" className="hidden xl:block animate-bounce absolute bottom-6 right-1/2 translate-x-1/2 size-10" />
+         </Card>
       </motion.div>
    );
 };

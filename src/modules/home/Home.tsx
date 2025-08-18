@@ -1,7 +1,9 @@
 import { cn } from "@/components/lib/utils";
 import { Section } from "@/components/types/section.types";
+import { Card } from "@/components/ui/card";
 import { useResponsive } from "@/hooks/use-responsive";
 import { useSectionClick } from "@/hooks/use-section";
+import { Icon } from '@iconify/react/dist/iconify.js';
 import { motion } from "framer-motion";
 import { ActionsSection } from "./ActionsSection";
 import { CredentialSection } from "./CredentialSection";
@@ -71,6 +73,14 @@ const Home = () => {
             section={Section.HOME}
             onClick={() => setClickedSection(Section.CONTACT)}
          />
+         <Card
+            className="absolute bottom-4 right-1/2 translate-x-1/2 z-50"
+            animate="bottom"
+            type='custom'
+            section={Section.HOME}
+         >
+            <Icon icon="lineicons:scroll-down-2" className="hidden xl:block animate-bounce size-10" />
+         </Card>
       </motion.div>
    );
 };
